@@ -1,0 +1,66 @@
+name: Scan
+
+# Runs the scanner on a schedule (and on demand), then commits the fresh
+# results back into the repo. No hosting required — this all runs on
+# GitHub's free runners.
+#
+# Setup (one time):
+#   1. Add your key as a repo secret named HELIUS_API_KEY
+#      (Settings -> Secrets and variables -> Actions -> New repository secret).
+#   2. Make sure wallets.txt in the repo has your wallet addresses.
+# That's it. Use the "Run workflow" button on the Actions tab to test it.
+
+on:
+  schedule:
+    # Every 12 hours, at 00:00 and 12:00 UTC. Cron is always UTC.
+    # Each run still looks back over the last 24h (overlapping windows).
+    - cron: "0 */12 * * *"
+  workflow_dispatch: {} # adds a manual "Run workflow" button on the Actions tab
+
+# Allow the workflow to push the results commit back to the repo.
+permissions:
+  contents: write
+
+# Never let two scans run at once.
+concurrency:
+  group: scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run scan
+        env:
+          # Pulled from your repo secret — never hard-code the key here.
+          HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+          # Optional: uncomment and set these as repo secrets/variables to override defaults.
+          # MIN_MARKET_CAP: ${{ vars.MIN_MARKET_CAP }}
+          # MIN_VOLUME: ${{ vars.MIN_VOLUME }}
+        run: npm run scan
+
+      - name: Commit results back
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # output/ and data/ath-store.json are gitignored for local dev,
+          # so force-add them here. Committing ath-store.json back is what
+          # lets the observed-ATH history accumulate across scheduled runs.
+          git add -f output/ data/ath-store.json 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: scan results $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi

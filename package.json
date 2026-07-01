@@ -1,0 +1,28 @@
+{
+  "name": "solana-memecoin-scanner",
+  "version": "1.0.0",
+  "description": "Scan a list of Solana wallets for recent token buys, enrich with DEX Screener market data, filter by market cap/volume, and classify into NA/EU sessions (America/Chicago).",
+  "type": "module",
+  "scripts": {
+    "scan": "tsx src/index.ts",
+    "scan:watch": "tsx src/scheduler.ts",
+    "serve": "tsx src/server.ts",
+    "start": "tsx src/server.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "tsx": "^4.19.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.7.4",
+    "typescript": "^5.6.2"
+  },
+  "license": "MIT"
+}

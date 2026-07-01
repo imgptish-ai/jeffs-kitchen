@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solana Meme Scanner</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="scanline" id="scanline" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div class="brand-text">
+          <h1>Solana Meme Scanner</h1>
+          <p class="brand-sub">Wallet buys → DEX Screener → NA / EU sessions</p>
+        </div>
+      </div>
+      <div class="config-strip" id="configStrip" aria-label="Current settings">
+        <!-- config badges injected here -->
+      </div>
+    </header>
+
+    <section class="actionbar">
+      <button class="scan-btn" id="scanBtn" type="button">
+        <span class="scan-btn-label">Run scan</span>
+      </button>
+      <div class="status" id="status">
+        <span class="status-dot" id="statusDot"></span>
+        <span class="status-text" id="statusText">Loading…</span>
+      </div>
+    </section>
+
+    <section class="results">
+      <div class="tabs" id="tabs" role="tablist">
+        <button class="tab is-active" data-tab="all" role="tab" type="button">
+          All <span class="tab-count" id="countAll">0</span>
+        </button>
+        <button class="tab tab-na" data-tab="NA" role="tab" type="button">
+          NA <span class="tab-count" id="countNA">0</span>
+        </button>
+        <button class="tab tab-eu" data-tab="EU" role="tab" type="button">
+          EU <span class="tab-count" id="countEU">0</span>
+        </button>
+        <div class="tabs-spacer"></div>
+        <a class="downloads" id="downloadJson" href="/results.json" title="Open raw results.json">results.json ↗</a>
+      </div>
+
+      <div class="table-wrap">
+        <table class="grid" id="grid">
+          <thead>
+            <tr>
+              <th class="col-token" data-sort="symbol">Token</th>
+              <th data-sort="sessionCategory">Session</th>
+              <th class="num" data-sort="marketCap">Mkt cap</th>
+              <th class="num" data-sort="fdv">FDV</th>
+              <th class="num" data-sort="observedAthMarketCap">Obs. ATH</th>
+              <th class="num" data-sort="volume24h">Vol 24h</th>
+              <th class="num" data-sort="liquidityUsd">Liquidity</th>
+              <th class="num" data-sort="walletCount">Wallets</th>
+              <th data-sort="sessionTimestampUsed">Timestamp used</th>
+              <th class="col-link">Chart</th>
+            </tr>
+          </thead>
+          <tbody id="gridBody"><!-- rows injected --></tbody>
+        </table>
+      </div>
+
+      <div class="empty" id="empty" hidden>
+        <p class="empty-title">No matching tokens yet.</p>
+        <p class="empty-sub">
+          Add wallets to <code>wallets.txt</code>, then hit <strong>Run scan</strong> to pull the last
+          <span id="emptyWindow">24</span>h of buys.
+        </p>
+      </div>
+
+      <div class="banner banner-error" id="errorBanner" hidden>
+        <span class="banner-title">Scan failed.</span>
+        <span class="banner-msg" id="errorMsg"></span>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span id="footNote">Times shown in the configured timezone. Observed ATH accumulates across runs — it is not a token's true all-time high.</span>
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

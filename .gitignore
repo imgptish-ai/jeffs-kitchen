@@ -1,0 +1,9 @@
+node_modules/
+dist/
+output/
+.env
+
+# Local observed-ATH database is generated at runtime.
+# Keep it if you want your observed ATH history to persist across machines;
+# ignore it if you don't. By default we ignore it.
+data/ath-store.json
