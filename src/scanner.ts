@@ -17,6 +17,7 @@ import { CONFIG, assertConfig } from './config';
 import { loadWallets } from './wallets';
 import { getWalletBuys, getTokenCreationTime } from './helius';
 import { getPairsForMints } from './dexscreener';
+import { getPeakPriceUsd } from './geckoterminal';
 import { AthStore } from './athStore';
 import { applyFilters } from './filters';
 import { classifyWithReason } from './session';
@@ -100,6 +101,23 @@ export async function runScan(): Promise<TokenResult[]> {
     const pair = pairs.get(mint);
     if (!pair) continue; // no market data -> can't meet mcap/vol thresholds
 
+    // Cheap pre-checks: skip the expensive lookups (Helius creation time +
+    // GeckoTerminal peak) for coins that are ALREADY disqualified and can't be
+    // rescued by a higher peak. Volume/chain/ignored can only exclude, and if
+    // the CURRENT mcap already exceeds the ceiling, the peak (which is >=
+    // current) can't bring it back under. This saves Helius calls too.
+    const currentMax = Math.max(pair.marketCap ?? 0, pair.fdv ?? 0);
+    const ceilingEnabled = CONFIG.maxMarketCap > 0;
+    const alreadyOverCeiling = ceilingEnabled && currentMax > CONFIG.maxMarketCap;
+    if (
+      CONFIG.ignoredMints.has(mint) ||
+      pair.chainId !== 'solana' ||
+      pair.volume24h < CONFIG.minVolume ||
+      alreadyOverCeiling
+    ) {
+      continue;
+    }
+
     // Best-effort true token creation time (may be null -> we fall back later).
     let tokenCreatedAt: number | null = null;
     try {
@@ -109,8 +127,32 @@ export async function runScan(): Promise<TokenResult[]> {
     }
     await sleep(CONFIG.requestDelayMs);
 
-    // Observed ATH: snapshot the primary mcap (fallback to fdv).
-    const snapshotMcap = pair.marketCap ?? pair.fdv ?? null;
+    // Estimate a REAL peak market cap from GeckoTerminal price history.
+    // peak market cap = current market cap scaled by (peak price / current price),
+    // which assumes supply is ~constant (true for typical memecoins).
+    let peakMarketCap: number | null = null;
+    let peakPriceUsd: number | null = null;
+    let peakAt: number | null = null;
+    const baseMcap = pair.marketCap ?? pair.fdv ?? null;
+    if (CONFIG.resolvePeakMarketCap && pair.pairAddress && pair.priceUsd && pair.priceUsd > 0 && baseMcap) {
+      try {
+        const peak = await getPeakPriceUsd(pair.pairAddress, mint);
+        if (peak) {
+          peakPriceUsd = peak.peakPriceUsd;
+          peakAt = peak.peakAt;
+          // Peak can't be below the current price; clamp for safety.
+          const ratio = Math.max(peak.peakPriceUsd / pair.priceUsd, 1);
+          peakMarketCap = baseMcap * ratio;
+        }
+      } catch (err) {
+        log.warn(`Peak lookup failed for ${mint}: ${(err as Error).message}`);
+      }
+      await sleep(CONFIG.geckoDelayMs);
+    }
+
+    // Observed ATH: fold in the current snapshot AND the history-based peak,
+    // so the local ATH store is seeded with real peaks from the first run.
+    const snapshotMcap = Math.max(pair.marketCap ?? 0, pair.fdv ?? 0, peakMarketCap ?? 0) || null;
     const observedAth = athStore.update(mint, snapshotMcap, now);
 
     // Primary mcap per configured mode.
@@ -121,7 +163,7 @@ export async function runScan(): Promise<TokenResult[]> {
           ? observedAth
           : pair.marketCap;
 
-    // Filter.
+    // Filter (peak/ATH band).
     const outcome = applyFilters({
       mint,
       chainId: pair.chainId,
@@ -129,6 +171,7 @@ export async function runScan(): Promise<TokenResult[]> {
       marketCap: pair.marketCap,
       fdv: pair.fdv,
       observedAthMarketCap: observedAth,
+      peakMarketCap,
       volume24h: pair.volume24h,
       volumeField: pair.volumeField,
     });
@@ -157,6 +200,11 @@ export async function runScan(): Promise<TokenResult[]> {
       fdv: pair.fdv,
       primaryMcap,
       observedAthMarketCap: observedAth,
+      peakMarketCap,
+      peakPriceUsd,
+      peakAt,
+      athEstimate: outcome.athEstimate,
+      peakConfidence: outcome.peakConfidence,
       volume24h: pair.volume24h,
       volumeField: pair.volumeField,
       liquidityUsd: pair.liquidityUsd,
@@ -178,7 +226,7 @@ export async function runScan(): Promise<TokenResult[]> {
   athStore.save();
 
   // Sort: biggest market cap first for readability.
-  results.sort((a, b) => (b.marketCap ?? 0) - (a.marketCap ?? 0));
+  results.sort((a, b) => (b.athEstimate ?? 0) - (a.athEstimate ?? 0));
 
   finish(results);
   return results;

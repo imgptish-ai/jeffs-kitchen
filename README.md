@@ -120,17 +120,34 @@ Each scan computes `since = now − SCAN_WINDOW_HOURS` (default 24h) and only co
 
 ## How the filters work
 
+The market-cap band is applied to each coin's **estimated peak (ATH) market cap**, not its current value — so it answers "how high did this coin ever get?"
+
 A token is returned only if **all** of these are true within the window:
 
 1. Bought by **≥ 1** wallet from your list.
-2. `max(marketCap, fdv, observedAthMarketCap)` **≥ `MIN_MARKET_CAP`** (default `$10,000`).
-3. 24h volume **≥ `MIN_VOLUME`** (default `$10,000`). If DEX Screener has no `h24` volume, the closest available field (`h6`→`h1`→`m5`) is used, and `volumeField` records which one.
-4. Chain is **`solana`**.
-5. Token is **not** an ignored base/stable (SOL/USDC/USDT are always ignored; add more via `EXTRA_IGNORED_MINTS`).
+2. Estimated **peak market cap ≥ `MIN_MARKET_CAP`** (default `$10,000`) — it did reach the floor.
+3. Estimated **peak market cap ≤ `MAX_MARKET_CAP`** (default `$25,000`) — it never blew past the ceiling. Set `MAX_MARKET_CAP=0` to turn the ceiling off.
+4. 24h volume **≥ `MIN_VOLUME`** (default `$10,000`). If DEX Screener has no `h24` volume, the closest field (`h6`→`h1`→`m5`) is used, recorded in `volumeField`.
+5. Chain is **`solana`**.
+6. Token is **not** an ignored base/stable (SOL/USDC/USDT are always ignored; add more via `EXTRA_IGNORED_MINTS`).
 
-Each result carries a `filterReason` string spelling out what passed.
+Each result carries a `filterReason` string spelling out what passed, plus `athEstimate` (the number the band was tested against) and `peakConfidence`.
 
-> `MCAP_MODE` (`marketCap` | `fdv` | `observedAth`) only picks which value is shown as the **primary** market cap and which one feeds the observed-ATH snapshot. The pass/fail mcap check above always uses the **best** of the three, matching the spec ("market cap, FDV, **or** highest observed market cap reached at least $10,000").
+### How the peak (ATH) is estimated
+
+DEX Screener only reports *current* market cap — it has no all-time-high field. To get a real peak we query **GeckoTerminal** (free, no API key, and it does **not** use your Helius quota) for the token's **daily price candles**. Each daily candle's high is the true high for that day, so the maximum high across the coin's available history is a genuine peak price. We convert it to a peak market cap by scaling the current market cap by `peakPrice / currentPrice` (assuming supply is ~constant, which holds for typical memecoins).
+
+The band is tested against the **most conservative** number we have:
+
+```
+athEstimate = max(history-based peak, observed ATH across runs, current marketCap, current fdv)
+```
+
+Using the max matters for the ceiling: if **any** reliable signal says the coin was once bigger than `MAX_MARKET_CAP`, it's excluded — which is exactly what stops a coin that pumped to $400k and fell back to $18k from sneaking into a "$10k–$25k" screen.
+
+`peakConfidence` is `history` when a GeckoTerminal peak was available, or `observed-or-current` when it fell back (older than ~6 months, pool not on GeckoTerminal, etc.). In the dashboard, fallback peaks are marked with a `*`.
+
+**Honest limitation:** GeckoTerminal history goes back ~6 months and depends on the pool being tracked there. A peak older than that, or on an untracked pool, won't be captured — in that case the coin falls back to `observed-or-current`, which is weaker. For brand-new memecoins (the usual case here) the daily history covers their whole life, so the peak is reliable.
 
 ## How NA and EU categories are calculated
 
@@ -198,9 +215,12 @@ pm2 start "npm run scan:watch" --name memecoin-scanner
 |---|---|---|
 | `HELIUS_API_KEY` | — | **Required.** Helius API key. |
 | `SCAN_WINDOW_HOURS` | `24` | Look-back window per scan. |
-| `MIN_MARKET_CAP` | `10000` | Min market cap / FDV / observed ATH. |
+| `MIN_MARKET_CAP` | `10000` | Floor: coin's peak (ATH) market cap must reach this. |
+| `MAX_MARKET_CAP` | `25000` | Ceiling: coin's peak must not exceed this. `0` disables it. |
 | `MIN_VOLUME` | `10000` | Min 24h volume. |
-| `MCAP_MODE` | `marketCap` | Primary mcap metric: `marketCap` \| `fdv` \| `observedAth`. |
+| `RESOLVE_PEAK_MARKET_CAP` | `true` | Estimate a real peak via GeckoTerminal history. |
+| `GECKO_DELAY_MS` | `2100` | Delay between GeckoTerminal calls (free ~30/min). |
+| `MCAP_MODE` | `marketCap` | Which value is shown as "primary": `marketCap` \| `fdv` \| `observedAth`. |
 | `EXTRA_IGNORED_MINTS` | — | Extra mints to ignore (comma-separated). |
 | `TIMEZONE` | `America/Chicago` | IANA timezone for NA/EU. |
 | `NA_START` / `NA_END` | `10:00 AM` / `10:00 PM` | NA window (Chicago). |

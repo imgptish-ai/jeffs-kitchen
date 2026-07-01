@@ -70,6 +70,11 @@ export interface TokenResult {
   fdv: number | null;
   primaryMcap: number | null; // per CONFIG.mcapMode
   observedAthMarketCap: number | null;
+  peakMarketCap: number | null; // estimated peak from GeckoTerminal history (null if unavailable)
+  peakPriceUsd: number | null;
+  peakAt: number | null; // when the peak occurred (epoch ms)
+  athEstimate: number; // the value the peak-band filter used
+  peakConfidence: 'history' | 'observed-or-current';
   volume24h: number;
   volumeField: string;
   liquidityUsd: number | null;

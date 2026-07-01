@@ -134,7 +134,7 @@ function rowHtml(t) {
       <td><span class="pill pill-${t.sessionCategory}">${t.sessionCategory}</span></td>
       <td class="num">${fmtUsd(t.marketCap)}</td>
       <td class="num">${fmtUsd(t.fdv)}</td>
-      <td class="num">${fmtUsd(t.observedAthMarketCap)}</td>
+      <td class="num" title="${t.peakConfidence === 'history' ? 'from price history' : 'estimate (no history)'}">${fmtUsd(t.athEstimate)}${t.peakConfidence === 'history' ? '' : '*'}</td>
       <td class="num">${fmtUsd(t.volume24h)}</td>
       <td class="num">${fmtUsd(t.liquidityUsd)}</td>
       <td class="num wallets-count">${(t.wallets || []).length}</td>

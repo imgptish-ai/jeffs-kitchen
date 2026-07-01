@@ -41,9 +41,17 @@ export const CONFIG = {
   // ---- Scan window ----
   scanWindowHours: num(process.env.SCAN_WINDOW_HOURS, 24),
 
-  // ---- Filters ----
-  minMarketCap: num(process.env.MIN_MARKET_CAP, 10_000),
+  // ---- Filters (operate on the PEAK / ATH market-cap estimate, not current) ----
+  // A coin passes only if its estimated peak market cap is within this band.
+  minMarketCap: num(process.env.MIN_MARKET_CAP, 10_000), // floor: peak must have reached this
+  maxMarketCap: num(process.env.MAX_MARKET_CAP, 25_000), // ceiling: peak must NOT exceed this. 0 = no ceiling.
   minVolume: num(process.env.MIN_VOLUME, 10_000),
+
+  // ---- Peak / ATH estimation (GeckoTerminal, free, no API key, no Helius cost) ----
+  /** Pull historical daily candles to estimate a real peak market cap. */
+  resolvePeakMarketCap: bool(process.env.RESOLVE_PEAK_MARKET_CAP, true),
+  /** Delay between GeckoTerminal calls (free tier ~30/min -> keep >= 2000ms). */
+  geckoDelayMs: num(process.env.GECKO_DELAY_MS, 2100),
 
   /** Which mcap metric is the "primary" displayed value / ATH snapshot source. */
   mcapMode: (process.env.MCAP_MODE ?? 'marketCap') as 'marketCap' | 'fdv' | 'observedAth',
