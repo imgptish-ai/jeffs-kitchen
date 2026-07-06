@@ -4,10 +4,9 @@
  *
  * A token passes only if ALL hold:
  *   - bought by >= 1 imported wallet
- *   - its estimated PEAK market cap >= the floor:
- *       * $MIN_MARKET_CAP normally
- *       * $MIN_MARKET_CAP_X_PROFILE (lower) if the token's X link is an actual
- *         PROFILE (x.com/handle) — a small legitimacy signal
+ *   - its estimated PEAK market cap >= MIN_MARKET_CAP (same floor for every
+ *     token — no special treatment based on socials, X links, or anything
+ *     else that can be paid for)
  *   - its estimated PEAK market cap <= MAX_MARKET_CAP (0 disables the ceiling)
  *   - 24h volume (or closest field) >= MIN_VOLUME
  *   - chain is solana
@@ -23,42 +22,6 @@
  *   deliberately conservative for the ceiling.
  */
 import { CONFIG } from './config';
-
-/**
- * Does an X/Twitter URL point at an actual PROFILE (x.com/handle), as opposed
- * to a tweet, community, search, hashtag, or other non-profile page?
- * A profile is a single clean username path segment.
- */
-export function isXProfileLink(rawUrl: string | null | undefined): boolean {
-  if (!rawUrl) return false;
-
-  let host: string;
-  let pathname: string;
-  try {
-    const u = new URL(/^https?:\/\//i.test(rawUrl) ? rawUrl : `https://${rawUrl}`);
-    host = u.hostname.toLowerCase().replace(/^www\./, '');
-    pathname = u.pathname;
-  } catch {
-    return false;
-  }
-
-  if (host !== 'x.com' && host !== 'twitter.com' && host !== 'mobile.twitter.com') return false;
-
-  const segments = pathname.split('/').filter(Boolean);
-  if (segments.length !== 1) return false;
-
-  const handle = segments[0]!.toLowerCase();
-  if (!/^[a-z0-9_]{1,15}$/.test(handle)) return false;
-
-  const RESERVED = new Set([
-    'i', 'home', 'explore', 'search', 'hashtag', 'intent', 'share',
-    'messages', 'notifications', 'settings', 'compose', 'login', 'signup',
-    'about', 'tos', 'privacy', 'status', 'statuses',
-  ]);
-  if (RESERVED.has(handle)) return false;
-
-  return true;
-}
 
 export interface FilterInput {
   mint: string;
@@ -106,16 +69,11 @@ export function applyFilters(input: FilterInput): FilterOutcome {
     input.peakMarketCap != null ? 'history' : 'observed-or-current';
 
   const boughtOk = input.walletCount >= 1;
-
-  // A real X profile link lowers the floor (small legitimacy signal); the
-  // ceiling is unchanged. Guard against a misconfigured profile floor being
-  // higher than the normal one by taking the more lenient (lower) of the two.
-  const xIsProfile = isXProfileLink(input.xLink);
-  const effectiveFloor = xIsProfile
-    ? Math.min(CONFIG.minMarketCapWithXProfile, CONFIG.minMarketCap)
-    : CONFIG.minMarketCap;
-  const floorOk = athEstimate >= effectiveFloor;
-
+  // Same floor and ceiling for every token — no lower bar for having socials
+  // attached. (Having X/website info populated on DEX Screener frequently
+  // means the project paid for DEX Screener's "Enhanced Token Info" listing
+  // service, not that it's more legitimate — so we don't treat it as one.)
+  const floorOk = athEstimate >= CONFIG.minMarketCap;
   const ceilingEnabled = CONFIG.maxMarketCap > 0;
   const ceilingOk = !ceilingEnabled || athEstimate <= CONFIG.maxMarketCap;
   const volOk = input.volume24h >= CONFIG.minVolume;
@@ -130,8 +88,7 @@ export function applyFilters(input: FilterInput): FilterOutcome {
 
   notes.push(`${boughtOk ? '\u2713' : '\u2717'} bought by ${input.walletCount} wallet(s)`);
   notes.push(
-    `${floorOk ? '\u2713' : '\u2717'} peak\u2248${usd(athEstimate)} >= floor ${usd(effectiveFloor)}` +
-      `${xIsProfile ? ' (X-profile floor)' : ''} [${peakConfidence}]`,
+    `${floorOk ? '\u2713' : '\u2717'} peak\u2248${usd(athEstimate)} >= floor ${usd(CONFIG.minMarketCap)} [${peakConfidence}]`,
   );
   if (ceilingEnabled) {
     notes.push(`${ceilingOk ? '\u2713' : '\u2717'} peak\u2248${usd(athEstimate)} <= ceiling ${usd(CONFIG.maxMarketCap)}`);
