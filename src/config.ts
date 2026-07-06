@@ -56,10 +56,6 @@ export const CONFIG = {
   // ---- Filters (operate on the PEAK / ATH market-cap estimate, not current) ----
   // A coin passes only if its estimated peak market cap is within this band.
   minMarketCap: num(process.env.MIN_MARKET_CAP, 8_000), // floor: peak must have reached this
-  // Lower floor granted ONLY to tokens whose X link is an actual profile
-  // (x.com/handle) — a small legitimacy signal, so we look at slightly
-  // smaller ones. Applies to the floor only; the ceiling is unchanged.
-  minMarketCapWithXProfile: num(process.env.MIN_MARKET_CAP_X_PROFILE, 5_000),
   maxMarketCap: num(process.env.MAX_MARKET_CAP, 25_000), // ceiling: peak must NOT exceed this. 0 = no ceiling.
   minVolume: num(process.env.MIN_VOLUME, 10_000),
 
