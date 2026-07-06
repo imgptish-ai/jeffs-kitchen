@@ -59,9 +59,6 @@ export const CONFIG = {
   maxMarketCap: num(process.env.MAX_MARKET_CAP, 25_000), // ceiling: peak must NOT exceed this. 0 = no ceiling.
   minVolume: num(process.env.MIN_VOLUME, 10_000),
 
-  /** Require the token to have an X/Twitter link on DEX Screener to pass. */
-  requireXLink: bool(process.env.REQUIRE_X_LINK, false),
-
   /**
    * Require the token's AGE at scan time to fall inside [creationMinAgeHours,
    * creationMaxAgeHours] — e.g. "created 8-16 hours ago as of right now".
