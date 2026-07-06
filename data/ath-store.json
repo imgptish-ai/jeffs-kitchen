@@ -6628,8 +6628,8 @@
     "observedAthMarketCap": 48049.21964431095,
     "lastMarketCap": 48044.85985666515,
     "firstSeenAt": 1782962969199,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 5
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 6
   },
   "BKiE18n1qzfTHkmGm6MuHhfwJsmMPkJLo6swN9Gppump": {
     "mint": "BKiE18n1qzfTHkmGm6MuHhfwJsmMPkJLo6swN9Gppump",
@@ -23386,10 +23386,10 @@
   "EPQKiJRR3AoTzqB4nmqM1iEhkjeve1C49Wh2Ke1ipump": {
     "mint": "EPQKiJRR3AoTzqB4nmqM1iEhkjeve1C49Wh2Ke1ipump",
     "observedAthMarketCap": 87629.12808433808,
-    "lastMarketCap": 87629.12808433808,
+    "lastMarketCap": 87584.2787828399,
     "firstSeenAt": 1783133304199,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 5
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 6
   },
   "3wD6VNXs2oWM4zFXxzzuqvsKHZd33122HVjzqhmhpump": {
     "mint": "3wD6VNXs2oWM4zFXxzzuqvsKHZd33122HVjzqhmhpump",
@@ -32538,10 +32538,10 @@
   "5aBuHkPMH8g8SXbapGqS2fuS748F658T9QMFYGe3pump": {
     "mint": "5aBuHkPMH8g8SXbapGqS2fuS748F658T9QMFYGe3pump",
     "observedAthMarketCap": 22371.79801788415,
-    "lastMarketCap": 22367.69273065122,
+    "lastMarketCap": 22369.61048445176,
     "firstSeenAt": 1783308343126,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 3
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 4
   },
   "Dhu68zhQZXrSZViKWnHkhAnjXoWm5wtVggggBARcpump": {
     "mint": "Dhu68zhQZXrSZViKWnHkhAnjXoWm5wtVggggBARcpump",
@@ -32572,8 +32572,8 @@
     "observedAthMarketCap": 33679.61096988204,
     "lastMarketCap": 33662.23242964989,
     "firstSeenAt": 1783308343126,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 3
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 4
   },
   "a42691LRgcQ3bKn4sBKxaHTwvPBcvw6onBmbz6bpump": {
     "mint": "a42691LRgcQ3bKn4sBKxaHTwvPBcvw6onBmbz6bpump",
@@ -33202,10 +33202,10 @@
   "AyR8qkmwf6YSXx4iJj1S5gmp1kVQ94P6uFaS4hJLpump": {
     "mint": "AyR8qkmwf6YSXx4iJj1S5gmp1kVQ94P6uFaS4hJLpump",
     "observedAthMarketCap": 61601.337080262594,
-    "lastMarketCap": 61586.02986488607,
+    "lastMarketCap": 61586.02986488606,
     "firstSeenAt": 1783308343126,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 3
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 4
   },
   "F6Qaxcj5XRAPYDqrb6RHS24bfZLPtAs881cxbDDhpump": {
     "mint": "F6Qaxcj5XRAPYDqrb6RHS24bfZLPtAs881cxbDDhpump",
@@ -35073,67 +35073,67 @@
   },
   "7z2xwVnmRf5j6B1U7CUzo7p494vXSNifArck9tutpump": {
     "mint": "7z2xwVnmRf5j6B1U7CUzo7p494vXSNifArck9tutpump",
-    "observedAthMarketCap": 14401.233541682052,
-    "lastMarketCap": 14401.233541682052,
+    "observedAthMarketCap": 14404.951794441595,
+    "lastMarketCap": 14404.951794441595,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "5fF2wEfHNuZbt7dVwgY6oKx14CRzh9At9QNjvxnqpump": {
     "mint": "5fF2wEfHNuZbt7dVwgY6oKx14CRzh9At9QNjvxnqpump",
-    "observedAthMarketCap": 2208,
-    "lastMarketCap": 1922,
+    "observedAthMarketCap": 72516.1741425686,
+    "lastMarketCap": 72516.1741425686,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "AVLaVyufUYPqEbN3HZsBB3yntGsEDTWT9TeMXsErpump": {
     "mint": "AVLaVyufUYPqEbN3HZsBB3yntGsEDTWT9TeMXsErpump",
     "observedAthMarketCap": 427439.3347801033,
-    "lastMarketCap": 427439.3347801033,
+    "lastMarketCap": 427344.7361291831,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "BVjipxzB9RLUX7PmfENLNrokEwT4dreHJ8xN8tULpump": {
     "mint": "BVjipxzB9RLUX7PmfENLNrokEwT4dreHJ8xN8tULpump",
     "observedAthMarketCap": 16596.905164346234,
-    "lastMarketCap": 16596.49839977782,
+    "lastMarketCap": 16596.719896205133,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "8oGR7MPiDkng8dwyPUP1saRU3hLCkaaJWda4PqDcpump": {
     "mint": "8oGR7MPiDkng8dwyPUP1saRU3hLCkaaJWda4PqDcpump",
-    "observedAthMarketCap": 46806.46025596449,
-    "lastMarketCap": 46806.46025596449,
+    "observedAthMarketCap": 46807.14830523892,
+    "lastMarketCap": 46807.14830523892,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "3tJj8QaP9V6sFDpRXtndDYuqaBhE2nMY7MV4tkcppump": {
     "mint": "3tJj8QaP9V6sFDpRXtndDYuqaBhE2nMY7MV4tkcppump",
     "observedAthMarketCap": 27114.428349684196,
-    "lastMarketCap": 27114.428349684196,
+    "lastMarketCap": 27108.70452439176,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "2oipiYMYLxr1ZdTKZYnkqrU1u6Zv3boWXwvkaf3Apump": {
     "mint": "2oipiYMYLxr1ZdTKZYnkqrU1u6Zv3boWXwvkaf3Apump",
-    "observedAthMarketCap": 45009.16513715409,
-    "lastMarketCap": 45009.16513715409,
+    "observedAthMarketCap": 45010.74001208136,
+    "lastMarketCap": 45010.74001208136,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "3E8Zowzhy7pjgBjTszEYKZPf9v1pvrcfanbfnRFNpump": {
     "mint": "3E8Zowzhy7pjgBjTszEYKZPf9v1pvrcfanbfnRFNpump",
-    "observedAthMarketCap": 12368.664310114675,
-    "lastMarketCap": 12368.664310114675,
+    "observedAthMarketCap": 12369.621014869248,
+    "lastMarketCap": 12369.621014869248,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "617BQ86GAUdAmGreHaER8Dab3nwzBd1qCGK9M4Lbpump": {
     "mint": "617BQ86GAUdAmGreHaER8Dab3nwzBd1qCGK9M4Lbpump",
@@ -35146,18 +35146,18 @@
   "6YyxQSiWUN5NkBUAUi7UYEgoG3Tr3wR3F2wF322Gpump": {
     "mint": "6YyxQSiWUN5NkBUAUi7UYEgoG3Tr3wR3F2wF322Gpump",
     "observedAthMarketCap": 82456.39697369582,
-    "lastMarketCap": 82456.39697369581,
+    "lastMarketCap": 82456.39697369582,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "7aCs6WabHiXYGmqaLN68T2oM4QeStTqSN3EoFXG3pump": {
     "mint": "7aCs6WabHiXYGmqaLN68T2oM4QeStTqSN3EoFXG3pump",
     "observedAthMarketCap": 23665.424922112008,
-    "lastMarketCap": 23665.31927630889,
+    "lastMarketCap": 23662.854648675253,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "79TMWxf5uDbU7TBfhzLBya3K2RZ3imZbYrGppUNTpump": {
     "mint": "79TMWxf5uDbU7TBfhzLBya3K2RZ3imZbYrGppUNTpump",
@@ -35170,34 +35170,34 @@
   "6SLeV8HKpkxK6WUEBQV1ahcBYH56JdjNP879fEBWpump": {
     "mint": "6SLeV8HKpkxK6WUEBQV1ahcBYH56JdjNP879fEBWpump",
     "observedAthMarketCap": 22672.01838278616,
-    "lastMarketCap": 22672.01838278616,
+    "lastMarketCap": 22670.903143338,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "CiRFqBb9zxyQL9rTGWVsz4dyJpJGnVRoK9263Rvzpump": {
     "mint": "CiRFqBb9zxyQL9rTGWVsz4dyJpJGnVRoK9263Rvzpump",
     "observedAthMarketCap": 33800.27632926529,
-    "lastMarketCap": 33800.27632926529,
+    "lastMarketCap": 33787.11935132474,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "Aya6hSwtyrqCrqcgfxtEE1wmisgyLH1UM66cbHhHpump": {
     "mint": "Aya6hSwtyrqCrqcgfxtEE1wmisgyLH1UM66cbHhHpump",
     "observedAthMarketCap": 54789.23593885613,
-    "lastMarketCap": 54789.23593885613,
+    "lastMarketCap": 54743.1472274392,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "2C5UT1dzT3ppFpW8zH6uPkUhS9pDTTyxb8C9wj9Qpump": {
     "mint": "2C5UT1dzT3ppFpW8zH6uPkUhS9pDTTyxb8C9wj9Qpump",
     "observedAthMarketCap": 23414.27335309609,
-    "lastMarketCap": 23412.914802996187,
+    "lastMarketCap": 23413.060668158123,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "H77e36grLgoDdzHHepcRc18JtfgJ2jcSfsSHXiHLpump": {
     "mint": "H77e36grLgoDdzHHepcRc18JtfgJ2jcSfsSHXiHLpump",
@@ -35209,75 +35209,75 @@
   },
   "E65qNMLdfeyvdu44zZ6eTeb2wvrD9VuLszddBSezpump": {
     "mint": "E65qNMLdfeyvdu44zZ6eTeb2wvrD9VuLszddBSezpump",
-    "observedAthMarketCap": 60541.491466821724,
-    "lastMarketCap": 60541.491466821724,
+    "observedAthMarketCap": 60569.70278623777,
+    "lastMarketCap": 60569.70278623777,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "F27joKntT4tMj6nMpQduSrKYJc3dfNPzNzSqes6YwUi8": {
     "mint": "F27joKntT4tMj6nMpQduSrKYJc3dfNPzNzSqes6YwUi8",
     "observedAthMarketCap": 17477.51269796293,
-    "lastMarketCap": 17477.51269796293,
+    "lastMarketCap": 17476.24425028372,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "EkrF587TLYFta71tXKAFkjJ8Gfq3UqK9QwWc2CxXpump": {
     "mint": "EkrF587TLYFta71tXKAFkjJ8Gfq3UqK9QwWc2CxXpump",
     "observedAthMarketCap": 125667.5951519985,
-    "lastMarketCap": 125667.5951519985,
+    "lastMarketCap": 125632.22571908207,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "8vt1sbaHaLPBVsqTdaciZUpM23JWh7AjXuN5vQCgpump": {
     "mint": "8vt1sbaHaLPBVsqTdaciZUpM23JWh7AjXuN5vQCgpump",
     "observedAthMarketCap": 67041.5741510985,
-    "lastMarketCap": 67041.5741510985,
+    "lastMarketCap": 66996.65877560592,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "GrCKa3dtbnAxbSeD3SBXGw92nH4Zb1JYH39LsHC1pump": {
     "mint": "GrCKa3dtbnAxbSeD3SBXGw92nH4Zb1JYH39LsHC1pump",
     "observedAthMarketCap": 48072.96095912415,
-    "lastMarketCap": 48061.65932937481,
+    "lastMarketCap": 48059.4449866359,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "35JMv9WHbv13fJh9iaNsv5MuoTpYJnfPTBCv5c5Tpump": {
     "mint": "35JMv9WHbv13fJh9iaNsv5MuoTpYJnfPTBCv5c5Tpump",
-    "observedAthMarketCap": 13270.026931814235,
-    "lastMarketCap": 13270.026931814235,
+    "observedAthMarketCap": 13272.050910660582,
+    "lastMarketCap": 13272.050910660582,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "6UMvGbgvcVxGgN8VibdxfrW2zeasJ2eFa19hJTULpump": {
     "mint": "6UMvGbgvcVxGgN8VibdxfrW2zeasJ2eFa19hJTULpump",
     "observedAthMarketCap": 14791.942182324177,
     "lastMarketCap": 14791.942182324177,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "SCdS1SS7t2xwr7uisoncyHV8SBGT1uYZdNDQQpHpump": {
     "mint": "SCdS1SS7t2xwr7uisoncyHV8SBGT1uYZdNDQQpHpump",
     "observedAthMarketCap": 39361.112434702,
-    "lastMarketCap": 39361.04369508764,
+    "lastMarketCap": 39358.012090051336,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "pwumqkjpsfGmwKoZfbcvnk6wE9Aw1KoL9uQimCRhsZk": {
     "mint": "pwumqkjpsfGmwKoZfbcvnk6wE9Aw1KoL9uQimCRhsZk",
-    "observedAthMarketCap": 80696.21583032365,
-    "lastMarketCap": 80696.21583032365,
+    "observedAthMarketCap": 80696.21583032366,
+    "lastMarketCap": 80696.21583032366,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "2hDhMdV1NRhw9wUiDCFe9yrtE4DLvyfdP2ToUS8hpump": {
     "mint": "2hDhMdV1NRhw9wUiDCFe9yrtE4DLvyfdP2ToUS8hpump",
@@ -35289,147 +35289,147 @@
   },
   "BCDp6xA3NeFzfjMYPuw79k39gFJSjBpr4YgTEDBFpump": {
     "mint": "BCDp6xA3NeFzfjMYPuw79k39gFJSjBpr4YgTEDBFpump",
-    "observedAthMarketCap": 46061.862232854284,
-    "lastMarketCap": 46041.45378702671,
+    "observedAthMarketCap": 46061.86223285429,
+    "lastMarketCap": 46061.86223285429,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "5yxtkisosZ2WUMV7c6oDqZVpwSg33n3MLyVAHF5Ypump": {
     "mint": "5yxtkisosZ2WUMV7c6oDqZVpwSg33n3MLyVAHF5Ypump",
     "observedAthMarketCap": 11015.0410896517,
     "lastMarketCap": 11015.0410896517,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "BjTCTjrzkaHmDnPanDKhL4VzR6CrDC8m2XfBwyJapump": {
     "mint": "BjTCTjrzkaHmDnPanDKhL4VzR6CrDC8m2XfBwyJapump",
-    "observedAthMarketCap": 26913.195938975743,
-    "lastMarketCap": 26913.195938975743,
+    "observedAthMarketCap": 26923.646655455508,
+    "lastMarketCap": 26923.646655455508,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "8aRMXD1p1YHiwvgzQS5sKUfj5nLdtPNzg8xExkUqpump": {
     "mint": "8aRMXD1p1YHiwvgzQS5sKUfj5nLdtPNzg8xExkUqpump",
-    "observedAthMarketCap": 29992.220395889737,
-    "lastMarketCap": 29991.997370372865,
+    "observedAthMarketCap": 44513.80178043623,
+    "lastMarketCap": 44513.80178043623,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "8NSSq8AVfN8QYBmhJ4AnHegK4Ask8MGQ89MRFKF8pump": {
     "mint": "8NSSq8AVfN8QYBmhJ4AnHegK4Ask8MGQ89MRFKF8pump",
-    "observedAthMarketCap": 18903.38311421015,
-    "lastMarketCap": 18903.38311421015,
+    "observedAthMarketCap": 18903.65685255091,
+    "lastMarketCap": 18903.65685255091,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "6gY3mnj5HDe3yCSAVj1DuPmguG7ik5vfiRVvYiwHpump": {
     "mint": "6gY3mnj5HDe3yCSAVj1DuPmguG7ik5vfiRVvYiwHpump",
     "observedAthMarketCap": 23490.543511702588,
-    "lastMarketCap": 23483.66129113747,
+    "lastMarketCap": 23485.65129328193,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "BKTxYxj3ugjzsP5WTFh1suKHEfUn31nPb6gkpGhnpump": {
     "mint": "BKTxYxj3ugjzsP5WTFh1suKHEfUn31nPb6gkpGhnpump",
     "observedAthMarketCap": 61746.748171147854,
     "lastMarketCap": 61746.748171147854,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "3mW4yzx5WoXqVDJiUkFN5xe8FPQcFdy5T2KhL3UBpump": {
     "mint": "3mW4yzx5WoXqVDJiUkFN5xe8FPQcFdy5T2KhL3UBpump",
     "observedAthMarketCap": 17322.41277572635,
     "lastMarketCap": 17322.41277572635,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "FWbdv9yNdmTwbo3ZHnsTNEvFDGmwYpkwDCyBvaxfpump": {
     "mint": "FWbdv9yNdmTwbo3ZHnsTNEvFDGmwYpkwDCyBvaxfpump",
     "observedAthMarketCap": 40189.307214178494,
-    "lastMarketCap": 40189.307214178494,
+    "lastMarketCap": 40189.30721417849,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "FL6L4UYfH9HrmAjPLTRXuayv8ZsveMRZNpfuhyEupump": {
     "mint": "FL6L4UYfH9HrmAjPLTRXuayv8ZsveMRZNpfuhyEupump",
-    "observedAthMarketCap": 39483.690281493065,
-    "lastMarketCap": 39483.690281493065,
+    "observedAthMarketCap": 39507.69252482528,
+    "lastMarketCap": 39507.69252482528,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "4xRKrTTyqiTiUqDLuMhaCTWVVyQV53FtPQxLPsMMS44D": {
     "mint": "4xRKrTTyqiTiUqDLuMhaCTWVVyQV53FtPQxLPsMMS44D",
-    "observedAthMarketCap": 14239.648336058368,
-    "lastMarketCap": 14239.639550494676,
+    "observedAthMarketCap": 14241.085787201402,
+    "lastMarketCap": 14241.085787201402,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "AB8pxPAn1FtxXSJ5Qbvk1cZBwQoe9ijBmphww2nvpump": {
     "mint": "AB8pxPAn1FtxXSJ5Qbvk1cZBwQoe9ijBmphww2nvpump",
-    "observedAthMarketCap": 23002.222109767234,
-    "lastMarketCap": 23002.222109767234,
+    "observedAthMarketCap": 24357.960892458963,
+    "lastMarketCap": 24357.960892458963,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "7hqy5oj3mj5yKyz1noWmVY9UoutV4Nnf3tohXi1Rpump": {
     "mint": "7hqy5oj3mj5yKyz1noWmVY9UoutV4Nnf3tohXi1Rpump",
-    "observedAthMarketCap": 23758.928534818333,
-    "lastMarketCap": 23758.928534818333,
+    "observedAthMarketCap": 23759.240981626845,
+    "lastMarketCap": 23759.240981626845,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "DHgMjjNaiwGG5V6mhMytmsU7JXEKYT41rjXLEVCNpump": {
     "mint": "DHgMjjNaiwGG5V6mhMytmsU7JXEKYT41rjXLEVCNpump",
     "observedAthMarketCap": 22506.848770805682,
-    "lastMarketCap": 22506.848770805682,
+    "lastMarketCap": 22505.38246240959,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "3919tajYix98QTi8ph5gVxcC5zGpXBAn5AVTxu6Gpump": {
     "mint": "3919tajYix98QTi8ph5gVxcC5zGpXBAn5AVTxu6Gpump",
-    "observedAthMarketCap": 49215.47915345007,
-    "lastMarketCap": 49215.47915345007,
+    "observedAthMarketCap": 49216.15723694124,
+    "lastMarketCap": 49216.15723694124,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "7BcdwaopFmuccJMwc3E9P7DwqCVKXisJkBMgbNsipump": {
     "mint": "7BcdwaopFmuccJMwc3E9P7DwqCVKXisJkBMgbNsipump",
-    "observedAthMarketCap": 9765.708886402464,
-    "lastMarketCap": 9765.708886402464,
+    "observedAthMarketCap": 9765.810619958093,
+    "lastMarketCap": 9765.810619958093,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "JoLDmEk5fCP5wfpMknN54QohYGRNETBYaNQHSjVpump": {
     "mint": "JoLDmEk5fCP5wfpMknN54QohYGRNETBYaNQHSjVpump",
     "observedAthMarketCap": 16806.72484133983,
-    "lastMarketCap": 16806.72484133983,
+    "lastMarketCap": 16806.575706985324,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "Hr5KwYCPWy7wQFgUSE2wYEPCTtKNkva4hmPscVrFpump": {
     "mint": "Hr5KwYCPWy7wQFgUSE2wYEPCTtKNkva4hmPscVrFpump",
-    "observedAthMarketCap": 17094.64892158067,
-    "lastMarketCap": 17094.64892158067,
+    "observedAthMarketCap": 17095.32337245975,
+    "lastMarketCap": 17095.32337245975,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "5eywbfQrB3svcBAXhq56MSp7kSfKP5oQ6xQ1DQkWpump": {
     "mint": "5eywbfQrB3svcBAXhq56MSp7kSfKP5oQ6xQ1DQkWpump",
@@ -35444,103 +35444,263 @@
     "observedAthMarketCap": 42599.02430945967,
     "lastMarketCap": 42599.02430945967,
     "firstSeenAt": 1783345567579,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 2
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 3
   },
   "ET6wo7J9HxaU6hR2FhRRtRwhNeMNYKboTsuuToGpzQY4": {
     "mint": "ET6wo7J9HxaU6hR2FhRRtRwhNeMNYKboTsuuToGpzQY4",
-    "observedAthMarketCap": 310633.89788026526,
-    "lastMarketCap": 310633.89788026526,
+    "observedAthMarketCap": 310633.8978802653,
+    "lastMarketCap": 310633.8978802653,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "BCXkoaSsqiDBsVLBy3XdMh9NDfvgdtxUKd1iJj4bpump": {
     "mint": "BCXkoaSsqiDBsVLBy3XdMh9NDfvgdtxUKd1iJj4bpump",
     "observedAthMarketCap": 60350.902881994865,
-    "lastMarketCap": 60350.902881994865,
+    "lastMarketCap": 60350.90288199486,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "6wQPcqguu7vznzxToN868RvTHjxrmLiYgySd1yQypump": {
     "mint": "6wQPcqguu7vznzxToN868RvTHjxrmLiYgySd1yQypump",
     "observedAthMarketCap": 32105.371240616445,
-    "lastMarketCap": 32105.371240616445,
+    "lastMarketCap": 8739.19,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "4RQtnS5eSBWdaYQWc4oywMad4KHL6gna1LXJ8Z8wpump": {
     "mint": "4RQtnS5eSBWdaYQWc4oywMad4KHL6gna1LXJ8Z8wpump",
-    "observedAthMarketCap": 32906.80901703559,
-    "lastMarketCap": 32906.80901703559,
+    "observedAthMarketCap": 32914.35387680288,
+    "lastMarketCap": 32914.35387680288,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "EFpMZqKVkCVQSb5rHyhHvLequFHeq6YvbEus8aaDpump": {
     "mint": "EFpMZqKVkCVQSb5rHyhHvLequFHeq6YvbEus8aaDpump",
     "observedAthMarketCap": 37184.66151200887,
     "lastMarketCap": 37184.66151200887,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "HW9EcpKZNVYZpxz4veJeu35FrH3iJnXM2J8rXJ2Rpump": {
     "mint": "HW9EcpKZNVYZpxz4veJeu35FrH3iJnXM2J8rXJ2Rpump",
     "observedAthMarketCap": 88188.96275745978,
-    "lastMarketCap": 88188.96275745978,
+    "lastMarketCap": 88154.71138801954,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "62sxoJCTcyCJ21iiAauon1cgqDRhxQjRQLz38TNFpump": {
     "mint": "62sxoJCTcyCJ21iiAauon1cgqDRhxQjRQLz38TNFpump",
-    "observedAthMarketCap": 80136.08054550976,
-    "lastMarketCap": 80136.08054550976,
+    "observedAthMarketCap": 80176.04132320858,
+    "lastMarketCap": 80176.04132320858,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "9uyrFtA4gM4X7UZN9wS892anAKoAP9tjpdruBT85pump": {
     "mint": "9uyrFtA4gM4X7UZN9wS892anAKoAP9tjpdruBT85pump",
     "observedAthMarketCap": 18425.02807930482,
-    "lastMarketCap": 18425.02807930482,
+    "lastMarketCap": 3922.23,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "CdeLJMA4rbWrQ9KFBJdDLnqt6jRwNieoEobtjoGspump": {
     "mint": "CdeLJMA4rbWrQ9KFBJdDLnqt6jRwNieoEobtjoGspump",
     "observedAthMarketCap": 18540.063834542823,
-    "lastMarketCap": 18540.063834542823,
+    "lastMarketCap": 18538.997915077085,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "BvhBK9hsjFYqFxuLWgJthN1pnEFHXsSqXggDgruYpump": {
     "mint": "BvhBK9hsjFYqFxuLWgJthN1pnEFHXsSqXggDgruYpump",
     "observedAthMarketCap": 16495.606159422165,
-    "lastMarketCap": 16495.606159422165,
+    "lastMarketCap": 16489.141748703252,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "ExFmdCFHt32d3u6xuisqe2NdYgFQYvq3UpbDwK8cpump": {
     "mint": "ExFmdCFHt32d3u6xuisqe2NdYgFQYvq3UpbDwK8cpump",
-    "observedAthMarketCap": 50619.08091533473,
-    "lastMarketCap": 50619.08091533473,
+    "observedAthMarketCap": 50623.17829036777,
+    "lastMarketCap": 50623.17829036777,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
-    "snapshotCount": 1
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
   },
   "CezHkE5GBkRHjNxfFa24DKrauAvndHzUC39qMhKKpump": {
     "mint": "CezHkE5GBkRHjNxfFa24DKrauAvndHzUC39qMhKKpump",
-    "observedAthMarketCap": 20121.439505540784,
-    "lastMarketCap": 20121.439505540784,
+    "observedAthMarketCap": 38144.2326439342,
+    "lastMarketCap": 38144.2326439342,
     "firstSeenAt": 1783352961491,
-    "lastSeenAt": 1783352961491,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 2
+  },
+  "66gh4FooduxSQFdHKNMtD3nAyYq6PCbBkaQX51Pgpump": {
+    "mint": "66gh4FooduxSQFdHKNMtD3nAyYq6PCbBkaQX51Pgpump",
+    "observedAthMarketCap": 22614.409237262746,
+    "lastMarketCap": 22614.409237262746,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "D3ENvLLEnP4EnuiF7bnnxcssFXdp1FnEbAbLLU3spump": {
+    "mint": "D3ENvLLEnP4EnuiF7bnnxcssFXdp1FnEbAbLLU3spump",
+    "observedAthMarketCap": 73004.23092935796,
+    "lastMarketCap": 73004.23092935796,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "7eeh3GhM2onqZdnBPzKwfdqcKxmYEtxEHwYFT8ZRpump": {
+    "mint": "7eeh3GhM2onqZdnBPzKwfdqcKxmYEtxEHwYFT8ZRpump",
+    "observedAthMarketCap": 76961.63041960828,
+    "lastMarketCap": 76961.63041960828,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "HMvMjhc2AGSHdDKiwpad8qQRopYegtvhnWCsjbH1pump": {
+    "mint": "HMvMjhc2AGSHdDKiwpad8qQRopYegtvhnWCsjbH1pump",
+    "observedAthMarketCap": 27366.438922355454,
+    "lastMarketCap": 27366.438922355454,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "BvmVQVoGBSGT3DtGENmwwhtnCZxn9tkiuu14FRd6pump": {
+    "mint": "BvmVQVoGBSGT3DtGENmwwhtnCZxn9tkiuu14FRd6pump",
+    "observedAthMarketCap": 105577.2067882189,
+    "lastMarketCap": 105577.2067882189,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "3xwijGYMTdC3Ec7eR8p6u17HgzMjL1wymnsBKU57pump": {
+    "mint": "3xwijGYMTdC3Ec7eR8p6u17HgzMjL1wymnsBKU57pump",
+    "observedAthMarketCap": 45983.180729141066,
+    "lastMarketCap": 45983.180729141066,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "5njbEzhLXY8uYBc9gneZAn1ugsGKsJ1q9XB9aGhvg5Ky": {
+    "mint": "5njbEzhLXY8uYBc9gneZAn1ugsGKsJ1q9XB9aGhvg5Ky",
+    "observedAthMarketCap": 49788.606526551266,
+    "lastMarketCap": 49788.606526551266,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "Fuz9xTkA4jDXtak1RQ8yFr1SZrGtzoVBQJDZx2V9d2y": {
+    "mint": "Fuz9xTkA4jDXtak1RQ8yFr1SZrGtzoVBQJDZx2V9d2y",
+    "observedAthMarketCap": 78675.4961099852,
+    "lastMarketCap": 78675.4961099852,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "FVxGz44hqdZ8V7nwhqiPKFBV6SaxiNqhaxkavGtTpump": {
+    "mint": "FVxGz44hqdZ8V7nwhqiPKFBV6SaxiNqhaxkavGtTpump",
+    "observedAthMarketCap": 57007.530337250115,
+    "lastMarketCap": 57007.530337250115,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "8xYTNU8FPfkFiCT1tmdqJDs6HfWFEhzfRgYq3Caqpump": {
+    "mint": "8xYTNU8FPfkFiCT1tmdqJDs6HfWFEhzfRgYq3Caqpump",
+    "observedAthMarketCap": 36365.460373321184,
+    "lastMarketCap": 36365.460373321184,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "7wrMK4WD5qK8GLLhQkkFesNJEss59PonxeqgJfpWpump": {
+    "mint": "7wrMK4WD5qK8GLLhQkkFesNJEss59PonxeqgJfpWpump",
+    "observedAthMarketCap": 40706.89284698348,
+    "lastMarketCap": 40706.89284698348,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "Ak5TFMmF85guHinKUagRDjfFchYbXxcNFRCCX2fppump": {
+    "mint": "Ak5TFMmF85guHinKUagRDjfFchYbXxcNFRCCX2fppump",
+    "observedAthMarketCap": 38566.05525731612,
+    "lastMarketCap": 38566.05525731612,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "pF4VrJC3oC3FfikBrhyw6CsN9tD3sTY3btJr915pump": {
+    "mint": "pF4VrJC3oC3FfikBrhyw6CsN9tD3sTY3btJr915pump",
+    "observedAthMarketCap": 28769.567311079023,
+    "lastMarketCap": 28769.567311079023,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "4nGWFgMAgnKxdm4wtA7TyscUtJoagMHX5LDqHcC8pump": {
+    "mint": "4nGWFgMAgnKxdm4wtA7TyscUtJoagMHX5LDqHcC8pump",
+    "observedAthMarketCap": 52850.67732603916,
+    "lastMarketCap": 52850.67732603916,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "Gn9PXRetBcet6pB15CE3VcJaBH7DiG2A1Gw9a3DLpump": {
+    "mint": "Gn9PXRetBcet6pB15CE3VcJaBH7DiG2A1Gw9a3DLpump",
+    "observedAthMarketCap": 49853.32835307925,
+    "lastMarketCap": 49853.32835307925,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "FKJ4SBNxxmeW5X4mMKUZxbhBrKxpgittoX6jBJBMpump": {
+    "mint": "FKJ4SBNxxmeW5X4mMKUZxbhBrKxpgittoX6jBJBMpump",
+    "observedAthMarketCap": 33807.04953696109,
+    "lastMarketCap": 33807.04953696109,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "DHj8Lv8D4SqqDTvWGVUvkSf3JnCTntbtdv2nkh45pump": {
+    "mint": "DHj8Lv8D4SqqDTvWGVUvkSf3JnCTntbtdv2nkh45pump",
+    "observedAthMarketCap": 9244.35,
+    "lastMarketCap": 9244.35,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "Dh7AJ8NBE8qF4B5m7CbYF7Npp8xRar9xB6kHrupmpump": {
+    "mint": "Dh7AJ8NBE8qF4B5m7CbYF7Npp8xRar9xB6kHrupmpump",
+    "observedAthMarketCap": 110435.52612168423,
+    "lastMarketCap": 110435.52612168423,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "GUk1EsQSdu5gami9mYSz9yEwcUaTh8gS2UqN9yRrpump": {
+    "mint": "GUk1EsQSdu5gami9mYSz9yEwcUaTh8gS2UqN9yRrpump",
+    "observedAthMarketCap": 24176.12937049642,
+    "lastMarketCap": 24176.12937049642,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
+    "snapshotCount": 1
+  },
+  "DKt7aBz3R7bbBwdNZKhkveJ94raTRAmG4jc7fdmepump": {
+    "mint": "DKt7aBz3R7bbBwdNZKhkveJ94raTRAmG4jc7fdmepump",
+    "observedAthMarketCap": 33265.92341750376,
+    "lastMarketCap": 33265.92341750376,
+    "firstSeenAt": 1783361412238,
+    "lastSeenAt": 1783361412238,
     "snapshotCount": 1
   }
 }
