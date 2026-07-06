@@ -1,29 +1,37 @@
 # Solana Meme Coin Scanner
 
-Scan a list of Solana wallets for the tokens they **bought in the last 24 hours**, enrich each token with **DEX Screener** market data, keep only the ones that meet your **market-cap / volume** thresholds, and label each one as an **NA** or **EU** session token using **Chicago Central Time**. Results are printed as a console table and written to JSON + CSV (all / NA / EU).
+Manually trigger a scan of your Solana wallets for tokens **created 8–16 hours before the moment you click Run**, enrich each token with **DEX Screener** market data, keep only the ones that meet your **peak market-cap / volume** thresholds, and label each one as an **NA** or **EU** session token using **Chicago Central Time**. Results are printed as a console table and written to JSON + CSV (all / NA / EU).
+
+There is **no automatic schedule** — every scan happens because you clicked the button. Each click uses "now" (the moment you click) as its clock: it never looks at a fixed calendar window, only at the token's age relative to your click.
 
 ---
 
 ## Architecture at a glance
 
 ```
+You click "Run workflow" (no schedule — manual only)
+   │
 wallets.txt
    │  (addresses)
    ▼
-Helius Enhanced Transactions API ──► detect token BUYS in the last 24h
+Helius Enhanced Transactions API ──► detect token BUYS in the wallet-buy lookback
    │                                   (wallet received a token AND spent SOL/USDC/USDT)
+   │                                   (lookback auto-sized to cover the creation-age band)
    ▼
 aggregate by token mint  ──► { wallets[], firstBuyAt, buyTimes[] }   (dedupe; drop SOL/USDC/USDT)
    │
    ▼
-DEX Screener /tokens/v1/solana (batched, ≤30 mints/req) ──► name, symbol, mcap, fdv, volume, liquidity, pairCreatedAt…
+DEX Screener /tokens/v1/solana (batched, ≤30 mints/req) ──► name, symbol, mcap, fdv, volume, liquidity, pairCreatedAt, socials…
    │
    ├─► Helius getSignaturesForAddress ──► best-effort TRUE token creation time (else fall back)
+   │
+   ├─► GeckoTerminal daily candles ──► estimated real PEAK market cap (free, no key, no Helius cost)
    │
    ├─► local ATH store (data/ath-store.json) ──► "highest observed market cap" across runs
    │
    ▼
-filters (mcap ≥ $10k, vol ≥ $10k, on Solana, not a base/stable, bought by ≥1 wallet)
+filters (peak mcap in [floor,ceiling], vol ≥ min, on Solana, not a base/stable,
+         bought by ≥1 wallet, optional X-link, age in [min,max]h as of click time)
    │
    ▼
 NA / EU classification (America/Chicago, DST-aware)
@@ -85,13 +93,14 @@ Then open `.env` and set `HELIUS_API_KEY` (free at <https://www.helius.dev/>). D
 ## Run
 
 ```bash
-npm run scan         # run once
-npm run scan:watch   # run now, then every 12 hours
+npm run scan         # run once, right now
 npm run serve        # web dashboard at http://localhost:3000
 npm run typecheck    # optional: TypeScript type check
 ```
 
 Output lands in `output/` (configurable via `OUTPUT_DIR`).
+
+The GitHub Actions workflow (`.github/workflows/scan.yml`) is **manual-only by design** — it has no schedule, only a "Run workflow" button on the Actions tab. `npm run scan:watch` still exists in `src/scheduler.ts` if you ever want a local, always-on loop on your own machine, but it's entirely separate from the GitHub Action and nothing runs it automatically.
 
 ## Web dashboard
 
@@ -114,9 +123,14 @@ Set the port with `PORT` in `.env`. To deploy, host it like any Node web app (Ra
 
 ---
 
-## How the 24-hour scan window works
+## How timing works: manual clicks, not a schedule
 
-Each scan computes `since = now − SCAN_WINDOW_HOURS` (default 24h) and only counts buys with a transaction timestamp `>= since`. It always measures **relative to the moment the scan runs**, not to calendar day boundaries. `npm run scan:watch` re-runs every 12h, so consecutive 24h windows overlap by ~12h and nothing between runs is missed.
+There's no cron, no auto-run — a scan only happens when you click **Run workflow** (in GitHub Actions) or run `npm run scan` yourself. The moment you click **is** "now" for that scan: every age and timestamp is computed relative to it, never against a fixed calendar window.
+
+Two settings work together:
+
+- **`CREATION_MIN_AGE_HOURS` / `CREATION_MAX_AGE_HOURS`** (default `8` / `16`) — the token must have been created between this many hours ago, as of your click. This is the setting that actually matters day-to-day.
+- **`SCAN_WINDOW_HOURS`** — how far back the scanner looks for *wallet buys*. Leave it unset and it **auto-derives to match `CREATION_MAX_AGE_HOURS`**: that's the minimum lookback needed to guarantee catching a buy of a token that could still fall in the creation-age band (a token created 16h ago could have been bought any time between then and now, so the buy search has to reach at least that far back). You only need to touch `SCAN_WINDOW_HOURS` yourself if you deliberately want a wider buy search than that.
 
 ## How the filters work
 
@@ -131,6 +145,14 @@ A token is returned only if **all** of these are true within the window:
 5. Chain is **`solana`**.
 6. Token is **not** an ignored base/stable (SOL/USDC/USDT are always ignored; add more via `EXTRA_IGNORED_MINTS`).
 7. *(optional)* Has an **X/Twitter link** listed on DEX Screener, if `REQUIRE_X_LINK=true`. Off by default. This is a cheap check (comes from the same DEX Screener response, no extra API calls) and is applied early, so it also skips the expensive peak/creation-time lookups for tokens without one — saving time and Helius credits.
+8. *(optional, on by default)* Token's **age at scan time** falls inside **`[CREATION_MIN_AGE_HOURS, CREATION_MAX_AGE_HOURS]`** — default **8–16 hours old, as of the moment you click Run**. Not just bought recently — the token itself has to be that new. See below for exactly how this is judged.
+
+### How the creation-age band is judged
+
+Age is computed as `(now − creation timestamp)`, where "now" is the instant you clicked Run. It uses true token creation time when it's resolvable, and otherwise falls back to DEX Screener's `pairCreatedAt` — labeled honestly via `creationTimestampSource` in the filter reason (`[token]` or `[pair]`). If **neither** is available, the token is excluded — an unknown age is never assumed to be valid.
+
+There's a free optimization built on one structural fact: a trading pair can never be created before the token it trades exists, so `pairCreatedAt` is always ≥ true token creation time. That means if the pair itself is already older than `CREATION_MAX_AGE_HOURS`, the token is guaranteed to be older too — so the scanner skips the expensive Helius creation-time lookup entirely for those tokens, saving both time and Helius credits before it ever gets that far. The "too young" side can't be pre-proven the same way (a pair can lag well behind true token creation — e.g. a pump.fun bonding-curve token that migrates to a new DEX pool much later), so that side always needs the real lookup, or the honest `pairCreatedAt`-based fallback if that lookup is disabled.
+
 
 Each result carries a `filterReason` string spelling out what passed, plus `athEstimate` (the number the band was tested against) and `peakConfidence`.
 
@@ -191,22 +213,25 @@ Each result includes a `sessionCategoryReason`, e.g.:
 
 Because no free source gives a token's real historical ATH market cap, this scanner **builds its own** over time. Every run writes a market-cap snapshot per token to `data/ath-store.json` and keeps the running maximum (`observedAthMarketCap`). **This only reflects the moments the scanner actually ran** — it is *not* the token's true ATH, and it starts accumulating the first time you scan a given token. Run more often (e.g. `scan:watch`) for a fuller picture. Delete `data/ath-store.json` to reset it.
 
-## How to schedule it every 12 hours
+## Running it manually vs. on a schedule
 
-```bash
-npm run scan:watch
-```
+**Default: fully manual.** The GitHub Actions workflow has no cron trigger — nothing runs unless you click **Run workflow** on the Actions tab. Every click uses that moment as "now" for the creation-age band (default: keep tokens created 8–16h before your click).
 
-This runs immediately, then every 12h (`SCHEDULE_INTERVAL_HOURS`), each time looking back 24h. It's a simple in-process loop, so keep the process alive with your tool of choice, e.g.:
+**If you ever want automatic runs instead**, two options, both opt-in:
 
-```bash
-# pm2
-npm i -g pm2
-pm2 start "npm run scan:watch" --name memecoin-scanner
+- **Re-add a schedule to the GitHub Action** — add a `schedule:` trigger back into `.github/workflows/scan.yml` (see git history for the original `cron: "0 */12 * * *"` example, or GitHub's [cron syntax docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)). If you do this, also raise `CREATION_MAX_AGE_HOURS` to comfortably exceed your interval so the age band doesn't miss tokens between runs.
+- **Run a local always-on loop** — `npm run scan:watch` (in `src/scheduler.ts`) runs immediately, then every `SCHEDULE_INTERVAL_HOURS` (default 12h), independent of GitHub entirely:
 
-# or a plain cron running the one-shot version twice a day (crontab -e):
-0 */12 * * * cd /path/to/solana-memecoin-scanner && /usr/bin/npm run scan >> scan.log 2>&1
-```
+  ```bash
+  npm run scan:watch
+  ```
+
+  Keep the process alive with a tool like pm2:
+
+  ```bash
+  npm i -g pm2
+  pm2 start "npm run scan:watch" --name memecoin-scanner
+  ```
 
 ---
 
@@ -215,13 +240,16 @@ pm2 start "npm run scan:watch" --name memecoin-scanner
 | Key | Default | Meaning |
 |---|---|---|
 | `HELIUS_API_KEY` | — | **Required.** Helius API key. |
-| `SCAN_WINDOW_HOURS` | `24` | Look-back window per scan. |
+| `SCAN_WINDOW_HOURS` | *(derives from `CREATION_MAX_AGE_HOURS`)* | Wallet-buy look-back window. Leave unset unless you want it wider than the creation-age ceiling. |
 | `MIN_MARKET_CAP` | `10000` | Floor: coin's peak (ATH) market cap must reach this. |
 | `MAX_MARKET_CAP` | `25000` | Ceiling: coin's peak must not exceed this. `0` disables it. |
 | `MIN_VOLUME` | `10000` | Min 24h volume. |
 | `RESOLVE_PEAK_MARKET_CAP` | `true` | Estimate a real peak via GeckoTerminal history. |
 | `GECKO_DELAY_MS` | `2100` | Delay between GeckoTerminal calls (free ~30/min). |
 | `REQUIRE_X_LINK` | `false` | Only keep tokens with an X/Twitter link on DEX Screener. |
+| `REQUIRE_CREATION_IN_WINDOW` | `true` | Token's age at scan time must fall in the creation-age band below. |
+| `CREATION_MIN_AGE_HOURS` | `8` | Minimum token age (hours) as of your click. |
+| `CREATION_MAX_AGE_HOURS` | `16` | Maximum token age (hours) as of your click. |
 | `MCAP_MODE` | `marketCap` | Which value is shown as "primary": `marketCap` \| `fdv` \| `observedAth`. |
 | `EXTRA_IGNORED_MINTS` | — | Extra mints to ignore (comma-separated). |
 | `TIMEZONE` | `America/Chicago` | IANA timezone for NA/EU. |

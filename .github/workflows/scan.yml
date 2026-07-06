@@ -1,21 +1,23 @@
 name: Scan
 
-# Runs the scanner on a schedule (and on demand), then commits the fresh
-# results back into the repo. No hosting required — this all runs on
-# GitHub's free runners.
+# MANUAL ONLY — there is no schedule. Every run happens because you clicked
+# "Run workflow" below. Each run scans for tokens whose creation time falls
+# 8-16 hours before the moment you click (configurable), not a fixed
+# calendar window — so the clock always starts from when you press the button.
 #
 # Setup (one time):
 #   1. Add your key as a repo secret named HELIUS_API_KEY
 #      (Settings -> Secrets and variables -> Actions -> New repository secret).
 #   2. Make sure wallets.txt in the repo has your wallet addresses.
-# That's it. Use the "Run workflow" button on the Actions tab to test it.
+# That's it. Use the "Run workflow" button on the Actions tab to run a scan.
+#
+# To tune behavior WITHOUT editing code, add repo Variables (Settings ->
+# Secrets and variables -> Actions -> Variables tab). Anything you set there
+# is picked up automatically below; anything you don't set falls back to the
+# default shown after "||" (which matches src/config.ts's own default).
 
 on:
-  schedule:
-    # Every 12 hours, at 00:00 and 12:00 UTC. Cron is always UTC.
-    # Each run still looks back over the last 24h (overlapping windows).
-    - cron: "0 */12 * * *"
-  workflow_dispatch: {} # adds a manual "Run workflow" button on the Actions tab
+  workflow_dispatch: {} # the only trigger — adds the manual "Run workflow" button
 
 # Allow the workflow to push the results commit back to the repo.
 permissions:
@@ -45,9 +47,33 @@ jobs:
         env:
           # Pulled from your repo secret — never hard-code the key here.
           HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
-          # Optional: uncomment and set these as repo secrets/variables to override defaults.
-          # MIN_MARKET_CAP: ${{ vars.MIN_MARKET_CAP }}
-          # MIN_VOLUME: ${{ vars.MIN_VOLUME }}
+
+          # Creation-age band: only keep tokens whose creation time is between
+          # these two ages (in hours) as of the moment you click Run workflow.
+          # Example (default): "created 8-16 hours ago".
+          CREATION_MIN_AGE_HOURS: ${{ vars.CREATION_MIN_AGE_HOURS || '8' }}
+          CREATION_MAX_AGE_HOURS: ${{ vars.CREATION_MAX_AGE_HOURS || '16' }}
+          REQUIRE_CREATION_IN_WINDOW: ${{ vars.REQUIRE_CREATION_IN_WINDOW || 'true' }}
+
+          # Wallet-buy lookback. Leave unset (default) to auto-match
+          # CREATION_MAX_AGE_HOURS above — that's the minimum needed to catch
+          # every buy of a token that could fall in the creation-age band.
+          # Only set this repo Variable if you deliberately want it wider.
+          SCAN_WINDOW_HOURS: ${{ vars.SCAN_WINDOW_HOURS }}
+
+          # Peak (ATH) market-cap band.
+          MIN_MARKET_CAP: ${{ vars.MIN_MARKET_CAP || '10000' }}
+          MAX_MARKET_CAP: ${{ vars.MAX_MARKET_CAP || '25000' }}
+          MIN_VOLUME: ${{ vars.MIN_VOLUME || '10000' }}
+
+          # Require an X/Twitter link on DEX Screener. Off by default.
+          REQUIRE_X_LINK: ${{ vars.REQUIRE_X_LINK || 'false' }}
+
+          # Expensive-lookup controls (cost/runtime knobs).
+          RESOLVE_TOKEN_CREATION_TIME: ${{ vars.RESOLVE_TOKEN_CREATION_TIME || 'true' }}
+          RESOLVE_PEAK_MARKET_CAP: ${{ vars.RESOLVE_PEAK_MARKET_CAP || 'true' }}
+          GECKO_DELAY_MS: ${{ vars.GECKO_DELAY_MS || '2100' }}
+          REQUEST_DELAY_MS: ${{ vars.REQUEST_DELAY_MS || '300' }}
         run: npm run scan
 
       - name: Commit results back
@@ -56,7 +82,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # output/ and data/ath-store.json are gitignored for local dev,
           # so force-add them here. Committing ath-store.json back is what
-          # lets the observed-ATH history accumulate across scheduled runs.
+          # lets the observed-ATH history accumulate across manual runs.
           git add -f output/ data/ath-store.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "No changes to commit."

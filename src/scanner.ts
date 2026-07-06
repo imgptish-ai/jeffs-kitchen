@@ -15,7 +15,7 @@
  */
 import { CONFIG, assertConfig } from './config';
 import { loadWallets } from './wallets';
-import { getWalletBuys, getTokenCreationTime } from './helius';
+import { getWalletBuys, getTokenCreationTime, getHeliusStats, resetHeliusStats } from './helius';
 import { getPairsForMints } from './dexscreener';
 import { getPeakPriceUsd } from './geckoterminal';
 import { AthStore } from './athStore';
@@ -50,13 +50,17 @@ function aggregateBuys(buys: WalletBuy[]): Map<string, TokenBuyAggregate> {
 
 export async function runScan(): Promise<TokenResult[]> {
   assertConfig();
+  resetHeliusStats();
 
   const now = Date.now();
   const sinceMs = now - CONFIG.scanWindowHours * 3600 * 1000;
 
   log.step(
-    `Scan started ${formatInZone(now, CONFIG.timezone)} | window = last ${CONFIG.scanWindowHours}h ` +
-      `(since ${formatInZone(sinceMs, CONFIG.timezone)})`,
+    `Scan started ${formatInZone(now, CONFIG.timezone)} | wallet-buy lookback = last ${CONFIG.scanWindowHours}h ` +
+      `(since ${formatInZone(sinceMs, CONFIG.timezone)})` +
+      (CONFIG.requireCreationInWindow
+        ? ` | keeping tokens created ${CONFIG.creationMinAgeHours}-${CONFIG.creationMaxAgeHours}h ago`
+        : ''),
   );
 
   // 1. wallets
@@ -110,12 +114,21 @@ export async function runScan(): Promise<TokenResult[]> {
     const ceilingEnabled = CONFIG.maxMarketCap > 0;
     const alreadyOverCeiling = ceilingEnabled && currentMax > CONFIG.maxMarketCap;
     const missingRequiredX = CONFIG.requireXLink && !pair.xLink;
+    // A trading pair can never be created before its own token, so if the
+    // pair is already older than the band's outer edge (creationMaxAgeHours,
+    // which sinceMs is derived from), the token is definitely too old too —
+    // safe to exclude without spending a Helius call to check further. The
+    // "too young" side can't be pre-proven this way, since a pair can lag
+    // well behind true token creation (e.g. later migration to a new pool).
+    const pairProvesTooOld =
+      CONFIG.requireCreationInWindow && pair.pairCreatedAt != null && pair.pairCreatedAt < sinceMs;
     if (
       CONFIG.ignoredMints.has(mint) ||
       pair.chainId !== 'solana' ||
       pair.volume24h < CONFIG.minVolume ||
       alreadyOverCeiling ||
-      missingRequiredX
+      missingRequiredX ||
+      pairProvesTooOld
     ) {
       continue;
     }
@@ -128,6 +141,14 @@ export async function runScan(): Promise<TokenResult[]> {
       log.warn(`Token creation lookup failed for ${mint}: ${(err as Error).message}`);
     }
     await sleep(CONFIG.requestDelayMs);
+
+    // Creation age check: true creation time if we have it, else DEX
+    // Screener's pairCreatedAt as an honest fallback. Unknown (neither
+    // available) does NOT count as in-band — see filters.ts.
+    const creationTimestamp = tokenCreatedAt ?? pair.pairCreatedAt ?? null;
+    const creationTimestampSource: 'token' | 'pair' | 'unknown' =
+      tokenCreatedAt != null ? 'token' : pair.pairCreatedAt != null ? 'pair' : 'unknown';
+    const creationAgeHours = creationTimestamp != null ? (now - creationTimestamp) / 3600000 : null;
 
     // Estimate a REAL peak market cap from GeckoTerminal price history.
     // peak market cap = current market cap scaled by (peak price / current price),
@@ -177,6 +198,8 @@ export async function runScan(): Promise<TokenResult[]> {
       volume24h: pair.volume24h,
       volumeField: pair.volumeField,
       xLink: pair.xLink,
+      creationAgeHours,
+      creationTimestampSource,
     });
     if (!outcome.passed) continue;
 
@@ -245,6 +268,13 @@ function finish(results: TokenResult[]): void {
   for (const r of results) log.info(summarizeResult(r));
 
   printConsoleTable(results);
+
+  const heliusStats = getHeliusStats();
+  log.step(
+    `Helius calls this run: ${heliusStats.total} total ` +
+      `(${heliusStats.walletTxCalls} wallet-transaction, ${heliusStats.creationTimeCalls} token-creation-time). ` +
+      `Compare against your Helius dashboard to track usage over time.`,
+  );
 
   const outDir = writeAllOutputs({ all: results, na, eu });
   log.step(`Wrote results to ${outDir}`);

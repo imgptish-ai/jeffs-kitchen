@@ -1,7 +1,8 @@
 /**
- * Filtering logic — the band is on the PEAK (ATH) market cap, not current.
+ * Filtering logic — the market-cap band is on the PEAK (ATH), not current,
+ * and the creation-time check is on the token's AGE at scan time.
  *
- * A token passes only if ALL hold within the scan window:
+ * A token passes only if ALL hold:
  *   - bought by >= 1 imported wallet
  *   - its estimated PEAK market cap >= MIN_MARKET_CAP  (it did reach the floor)
  *   - its estimated PEAK market cap <= MAX_MARKET_CAP  (it never blew past the
@@ -10,6 +11,12 @@
  *   - chain is solana
  *   - not an ignored base/stable
  *   - (optional) has an X/Twitter link on DEX Screener, if REQUIRE_X_LINK=true
+ *   - (optional, on by default) token's AGE at scan time is inside
+ *     [CREATION_MIN_AGE_HOURS, CREATION_MAX_AGE_HOURS] — e.g. "created
+ *     8-16 hours ago as of right now" — if REQUIRE_CREATION_IN_WINDOW=true.
+ *     Uses true token creation time when known, else DEX Screener's
+ *     pairCreatedAt as an honest fallback (labeled via
+ *     `creationTimestampSource`). Unknown age is excluded, not assumed valid.
  *
  * WHAT "PEAK" MEANS HERE:
  *   athEstimate = the highest of everything we know:
@@ -32,18 +39,26 @@ export interface FilterInput {
   volume24h: number;
   volumeField: string;
   xLink: string | null;
+  /** Token age at scan time, in hours. Null if no creation-ish timestamp was resolvable. */
+  creationAgeHours: number | null;
+  /** Which timestamp creationAgeHours was computed from. */
+  creationTimestampSource: 'token' | 'pair' | 'unknown';
 }
 
 export interface FilterOutcome {
   passed: boolean;
   reason: string;
-  athEstimate: number; // the value the band was tested against
+  athEstimate: number; // the value the market-cap band was tested against
   peakConfidence: 'history' | 'observed-or-current';
 }
 
 function usd(n: number | null | undefined): string {
   if (n == null) return 'n/a';
   return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function hrs(n: number | null): string {
+  return n == null ? 'unknown' : `${n.toFixed(1)}h`;
 }
 
 export function applyFilters(input: FilterInput): FilterOutcome {
@@ -67,6 +82,13 @@ export function applyFilters(input: FilterInput): FilterOutcome {
   const solOk = input.chainId === 'solana';
   const notIgnored = !CONFIG.ignoredMints.has(input.mint);
   const xOk = !CONFIG.requireXLink || Boolean(input.xLink);
+  // Unknown age does NOT count as in-band — we can't confirm it, so no
+  // benefit of the doubt.
+  const ageOk =
+    !CONFIG.requireCreationInWindow ||
+    (input.creationAgeHours != null &&
+      input.creationAgeHours >= CONFIG.creationMinAgeHours &&
+      input.creationAgeHours <= CONFIG.creationMaxAgeHours);
 
   notes.push(`${boughtOk ? '\u2713' : '\u2717'} bought by ${input.walletCount} wallet(s)`);
   notes.push(
@@ -81,7 +103,12 @@ export function applyFilters(input: FilterInput): FilterOutcome {
   if (CONFIG.requireXLink) {
     notes.push(`${xOk ? '\u2713' : '\u2717'} has X/Twitter link`);
   }
+  if (CONFIG.requireCreationInWindow) {
+    notes.push(
+      `${ageOk ? '\u2713' : '\u2717'} age=${hrs(input.creationAgeHours)} in [${CONFIG.creationMinAgeHours}h-${CONFIG.creationMaxAgeHours}h] [${input.creationTimestampSource}]`,
+    );
+  }
 
-  const passed = boughtOk && floorOk && ceilingOk && volOk && solOk && notIgnored && xOk;
+  const passed = boughtOk && floorOk && ceilingOk && volOk && solOk && notIgnored && xOk && ageOk;
   return { passed, reason: notes.join('; '), athEstimate, peakConfidence };
 }

@@ -34,12 +34,24 @@ const DEFAULT_IGNORED_MINTS = [
   'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB', // USDT
 ];
 
+// The creation-age band (see requireCreationInWindow below) determines how
+// far back wallet buys need to be scanned: a token that's exactly
+// creationMaxAgeHours old could have been bought any time between its
+// creation and now, so the buy lookback must reach at least that far back.
+// Computed as locals (not inline in CONFIG) so scanWindowHours can default
+// from it below.
+const creationMinAgeHours = num(process.env.CREATION_MIN_AGE_HOURS, 8);
+const creationMaxAgeHours = num(process.env.CREATION_MAX_AGE_HOURS, 16);
+
 export const CONFIG = {
   // ---- Secrets ----
   heliusApiKey: process.env.HELIUS_API_KEY ?? '',
 
-  // ---- Scan window ----
-  scanWindowHours: num(process.env.SCAN_WINDOW_HOURS, 24),
+  // ---- Scan window (wallet-buy lookback) ----
+  // Defaults to creationMaxAgeHours so it automatically covers the full
+  // creation-age band below without you having to keep two numbers in sync.
+  // Override only if you know you want a different buy lookback.
+  scanWindowHours: num(process.env.SCAN_WINDOW_HOURS, creationMaxAgeHours),
 
   // ---- Filters (operate on the PEAK / ATH market-cap estimate, not current) ----
   // A coin passes only if its estimated peak market cap is within this band.
@@ -49,6 +61,21 @@ export const CONFIG = {
 
   /** Require the token to have an X/Twitter link on DEX Screener to pass. */
   requireXLink: bool(process.env.REQUIRE_X_LINK, false),
+
+  /**
+   * Require the token's AGE at scan time to fall inside [creationMinAgeHours,
+   * creationMaxAgeHours] — e.g. "created 8-16 hours ago as of right now".
+   * Uses true token creation time when known, otherwise falls back to DEX
+   * Screener's pairCreatedAt (honestly labeled). A pair can never be created
+   * before its token exists, so a pair older than creationMaxAgeHours proves
+   * the token is too old too — letting us skip the expensive lookup entirely
+   * for those. The "too young" side can't be pre-proven the same way (a pair
+   * can lag well behind true token creation), so that side always needs the
+   * real lookup (or the honest pairCreatedAt-based fallback).
+   */
+  requireCreationInWindow: bool(process.env.REQUIRE_CREATION_IN_WINDOW, true),
+  creationMinAgeHours,
+  creationMaxAgeHours,
 
   // ---- Peak / ATH estimation (GeckoTerminal, free, no API key, no Helius cost) ----
   /** Pull historical daily candles to estimate a real peak market cap. */
@@ -110,6 +137,13 @@ export function assertConfig(): void {
     throw new Error(
       'HELIUS_API_KEY is not set. Copy .env.example to .env and add your Helius API key ' +
         '(free at https://www.helius.dev/).',
+    );
+  }
+  if (CONFIG.requireCreationInWindow && CONFIG.creationMinAgeHours > CONFIG.creationMaxAgeHours) {
+    throw new Error(
+      `CREATION_MIN_AGE_HOURS (${CONFIG.creationMinAgeHours}) is greater than ` +
+        `CREATION_MAX_AGE_HOURS (${CONFIG.creationMaxAgeHours}) — this would exclude every token. ` +
+        'Fix so min <= max.',
     );
   }
 }
