@@ -252,8 +252,12 @@ export async function runScan(): Promise<TokenResult[]> {
 
   athStore.save();
 
-  // Sort: biggest market cap first for readability.
-  results.sort((a, b) => (b.athEstimate ?? 0) - (a.athEstimate ?? 0));
+  // Newest-created first. True token creation time when known, else DEX
+  // Screener's pairCreatedAt as the fallback (same priority used elsewhere).
+  // A token with neither (shouldn't happen when REQUIRE_CREATION_IN_WINDOW is
+  // on, since that requires a resolvable timestamp to pass) sorts last.
+  const creationTimeFor = (r: TokenResult): number => r.tokenCreatedAt ?? r.pairCreatedAt ?? -Infinity;
+  results.sort((a, b) => creationTimeFor(b) - creationTimeFor(a));
 
   finish(results);
   return results;
