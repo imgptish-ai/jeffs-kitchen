@@ -1,104 +1,82 @@
 /**
  * Output: console table + JSON + CSV, including the NA/EU grouped files.
+ *
+ * Output columns are intentionally minimal — exactly what's needed to scan
+ * a result list at a glance: Name, Symbol, ContractAddress, MarketCap,
+ * PeakMarketCap, XLink, Wallets, PairCreatedAt. "PeakMarketCap" is the same
+ * value the filter judged the token against (athEstimate) — it folds in
+ * GeckoTerminal history, observed ATH, and current mcap/fdv, and is always a
+ * number (never blank), unlike the raw GeckoTerminal-only figure which can be
+ * null when history wasn't available.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { CONFIG } from './config';
 import { toCsv, log } from './util';
-import { formatInZone, toIso } from './time';
+import { toIso } from './time';
 import type { TokenResult } from './types';
 
-/** CSV column order (stable, human-friendly). */
-const CSV_COLUMNS = [
-  'name',
-  'symbol',
-  'contractAddress',
-  'sessionCategory',
-  'sessionCategoryReason',
-  'marketCap',
-  'fdv',
-  'peakMarketCap',
-  'athEstimate',
-  'peakConfidence',
-  'observedAthMarketCap',
-  'volume24h',
-  'volumeField',
-  'liquidityUsd',
-  'priceUsd',
-  'priceChange24h',
-  'buys24h',
-  'sells24h',
-  'dexId',
-  'pairAddress',
-  'dexScreenerUrl',
-  'xLink',
-  'wallets',
-  'tokenCreatedAtIso',
-  'pairCreatedAtIso',
-  'firstBuyAtIso',
-  'detectedAtIso',
-  'filterReason',
-] as const;
+/** The slim record actually written to results files (JSON + CSV alike). */
+interface OutputRecord {
+  name: string;
+  symbol: string;
+  contractAddress: string;
+  marketCap: number | string;
+  peakMarketCap: number;
+  xLink: string;
+  wallets: string[];
+  pairCreatedAt: string; // ISO string, or '' if unknown
+}
 
-/** Flatten a TokenResult into a CSV-friendly row (dates as ISO, arrays joined). */
-function toCsvRow(r: TokenResult): Record<string, unknown> {
+function toOutputRecord(r: TokenResult): OutputRecord {
   return {
     name: r.name,
     symbol: r.symbol,
     contractAddress: r.contractAddress,
-    sessionCategory: r.sessionCategory,
-    sessionCategoryReason: r.sessionCategoryReason,
     marketCap: r.marketCap ?? '',
-    fdv: r.fdv ?? '',
-    peakMarketCap: r.peakMarketCap ?? '',
-    athEstimate: r.athEstimate ?? '',
-    peakConfidence: r.peakConfidence,
-    observedAthMarketCap: r.observedAthMarketCap ?? '',
-    volume24h: r.volume24h,
-    volumeField: r.volumeField,
-    liquidityUsd: r.liquidityUsd ?? '',
-    priceUsd: r.priceUsd ?? '',
-    priceChange24h: r.priceChange24h ?? '',
-    buys24h: r.buys24h ?? '',
-    sells24h: r.sells24h ?? '',
-    dexId: r.dexId,
-    pairAddress: r.pairAddress,
-    dexScreenerUrl: r.dexScreenerUrl,
+    peakMarketCap: r.athEstimate,
     xLink: r.xLink ?? '',
-    wallets: r.wallets, // toCsv joins arrays with "; "
-    tokenCreatedAtIso: toIso(r.tokenCreatedAt),
-    pairCreatedAtIso: toIso(r.pairCreatedAt),
-    firstBuyAtIso: toIso(r.firstBuyAt),
-    detectedAtIso: toIso(r.detectedAt),
-    filterReason: r.filterReason,
+    wallets: r.wallets,
+    pairCreatedAt: toIso(r.pairCreatedAt),
   };
 }
 
+const CSV_COLUMNS: (keyof OutputRecord)[] = [
+  'name',
+  'symbol',
+  'contractAddress',
+  'marketCap',
+  'peakMarketCap',
+  'xLink',
+  'wallets',
+  'pairCreatedAt',
+];
+
 function writeJson(dir: string, file: string, data: TokenResult[]): void {
-  fs.writeFileSync(path.join(dir, file), JSON.stringify(data, null, 2));
+  const records = data.map(toOutputRecord);
+  fs.writeFileSync(path.join(dir, file), JSON.stringify(records, null, 2));
 }
 
 function writeCsv(dir: string, file: string, data: TokenResult[]): void {
-  const rows = data.map(toCsvRow);
-  fs.writeFileSync(path.join(dir, file), toCsv(rows, CSV_COLUMNS as unknown as (keyof (typeof rows)[number])[]));
+  const rows = data.map(toOutputRecord);
+  fs.writeFileSync(path.join(dir, file), toCsv(rows as unknown as Record<string, unknown>[], CSV_COLUMNS));
 }
 
-/** Pretty console.table of the key columns. */
+/** Pretty console.table of the key columns — mirrors the file output columns. */
 export function printConsoleTable(results: TokenResult[]): void {
   if (results.length === 0) {
     log.info('No tokens matched the filters in this window.');
     return;
   }
   const rows = results.map((r) => ({
+    name: r.name || '(?)',
     symbol: r.symbol || '(?)',
-    session: r.sessionCategory,
-    'peak$': Math.round(r.athEstimate),
-    'peak?': r.peakConfidence === 'history' ? 'hist' : 'est',
-    'mcap$': r.marketCap != null ? Math.round(r.marketCap) : '',
-    'vol24h$': Math.round(r.volume24h),
-    'liq$': r.liquidityUsd != null ? Math.round(r.liquidityUsd) : '',
+    contractAddress: r.contractAddress.slice(0, 6) + '…' + r.contractAddress.slice(-4),
+    'marketCap$': r.marketCap != null ? Math.round(r.marketCap) : '',
+    'peakMarketCap$': Math.round(r.athEstimate),
+    xLink: r.xLink ?? '',
     wallets: r.wallets.length,
-    mint: r.contractAddress.slice(0, 6) + '…' + r.contractAddress.slice(-4),
+    pairCreatedAt: toIso(r.pairCreatedAt).slice(0, 16).replace('T', ' '),
   }));
   console.table(rows);
 }
@@ -118,7 +96,9 @@ export function writeAllOutputs(bundle: ExportBundle): string {
   writeJson(dir, CONFIG.files.mainJson, bundle.all);
   writeCsv(dir, CONFIG.files.mainCsv, bundle.all);
 
-  // Grouped
+  // Grouped (still split by NA/EU session internally; the session label
+  // itself isn't one of the requested columns, so it's not repeated in-file —
+  // which file you open is what tells you NA vs EU).
   writeJson(dir, CONFIG.files.allJson, bundle.all);
   writeJson(dir, CONFIG.files.naJson, bundle.na);
   writeJson(dir, CONFIG.files.euJson, bundle.eu);
@@ -131,10 +111,5 @@ export function writeAllOutputs(bundle: ExportBundle): string {
 
 /** One-line human summary of a result, used in the run log. */
 export function summarizeResult(r: TokenResult): string {
-  const created = r.tokenCreatedAt
-    ? `token@${formatInZone(r.tokenCreatedAt, CONFIG.timezone)}`
-    : r.pairCreatedAt
-      ? `pair@${formatInZone(r.pairCreatedAt, CONFIG.timezone)}`
-      : `buy@${formatInZone(r.firstBuyAt, CONFIG.timezone)}`;
-  return `${r.symbol || '(?)'} [${r.sessionCategory}] ${created}`;
+  return `${r.symbol || '(?)'} [${r.sessionCategory}] peak≈$${Math.round(r.athEstimate).toLocaleString('en-US')}`;
 }
