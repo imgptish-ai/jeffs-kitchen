@@ -1,1 +1,1 @@
-name,symbol,contractAddress,sessionCategory,sessionCategoryReason,marketCap,fdv,peakMarketCap,athEstimate,peakConfidence,observedAthMarketCap,volume24h,volumeField,liquidityUsd,priceUsd,priceChange24h,buys24h,sells24h,dexId,pairAddress,dexScreenerUrl,xLink,wallets,tokenCreatedAtIso,pairCreatedAtIso,firstBuyAtIso,detectedAtIso,filterReason
+name,symbol,contractAddress,marketCap,peakMarketCap,xLink,wallets,pairCreatedAt
