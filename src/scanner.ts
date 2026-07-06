@@ -113,7 +113,6 @@ export async function runScan(): Promise<TokenResult[]> {
     const currentMax = Math.max(pair.marketCap ?? 0, pair.fdv ?? 0);
     const ceilingEnabled = CONFIG.maxMarketCap > 0;
     const alreadyOverCeiling = ceilingEnabled && currentMax > CONFIG.maxMarketCap;
-    const missingRequiredX = CONFIG.requireXLink && !pair.xLink;
     // A trading pair can never be created before its own token, so if the
     // pair is already older than the band's outer edge (creationMaxAgeHours,
     // which sinceMs is derived from), the token is definitely too old too —
@@ -127,7 +126,6 @@ export async function runScan(): Promise<TokenResult[]> {
       pair.chainId !== 'solana' ||
       pair.volume24h < CONFIG.minVolume ||
       alreadyOverCeiling ||
-      missingRequiredX ||
       pairProvesTooOld
     ) {
       continue;
@@ -197,7 +195,6 @@ export async function runScan(): Promise<TokenResult[]> {
       peakMarketCap,
       volume24h: pair.volume24h,
       volumeField: pair.volumeField,
-      xLink: pair.xLink,
       creationAgeHours,
       creationTimestampSource,
     });
