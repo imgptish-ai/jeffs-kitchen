@@ -145,7 +145,8 @@ function rowHtml(t) {
         </div>
       </td>
       <td class="col-link">
-        <a class="chart-link" href="${esc(t.dexScreenerUrl)}" target="_blank" rel="noopener">open ↗</a>
+        <a class="chart-link" href="${esc(t.dexScreenerUrl)}" target="_blank" rel="noopener">chart ↗</a>
+        ${t.xLink ? `<a class="chart-link x-link" href="${esc(t.xLink)}" target="_blank" rel="noopener">𝕏</a>` : ''}
       </td>
     </tr>
     ${open ? detailHtml(t) : ''}

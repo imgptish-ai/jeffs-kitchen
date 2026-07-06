@@ -32,6 +32,7 @@ export interface PairData {
   buys24h: number | null;
   sells24h: number | null;
   pairCreatedAt: number | null; // epoch ms, from DEX Screener
+  xLink: string | null; // X/Twitter link from DEX Screener info.socials, if any
 }
 
 /** Persisted observed-ATH record for a single mint. */
@@ -58,6 +59,9 @@ export interface TokenResult {
   tokenCreatedAt: number | null; // true mint creation time if resolved (epoch ms)
   tokenCreatedAtSource: 'token' | null;
   pairCreatedAt: number | null; // DEX Screener pool creation (epoch ms)
+
+  // Socials
+  xLink: string | null; // X/Twitter link, if the token has one on DEX Screener
 
   // Session
   sessionCategory: SessionCategory;

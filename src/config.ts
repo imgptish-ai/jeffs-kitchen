@@ -47,6 +47,9 @@ export const CONFIG = {
   maxMarketCap: num(process.env.MAX_MARKET_CAP, 25_000), // ceiling: peak must NOT exceed this. 0 = no ceiling.
   minVolume: num(process.env.MIN_VOLUME, 10_000),
 
+  /** Require the token to have an X/Twitter link on DEX Screener to pass. */
+  requireXLink: bool(process.env.REQUIRE_X_LINK, false),
+
   // ---- Peak / ATH estimation (GeckoTerminal, free, no API key, no Helius cost) ----
   /** Pull historical daily candles to estimate a real peak market cap. */
   resolvePeakMarketCap: bool(process.env.RESOLVE_PEAK_MARKET_CAP, true),

@@ -26,6 +26,16 @@ interface DexToken {
   name?: string;
   symbol?: string;
 }
+interface DexSocial {
+  platform?: string;
+  handle?: string;
+  type?: string;
+  url?: string;
+}
+interface DexWebsite {
+  url?: string;
+  label?: string;
+}
 interface DexPair {
   chainId?: string;
   dexId?: string;
@@ -41,6 +51,31 @@ interface DexPair {
   priceChange?: Partial<Record<'h24' | 'h6' | 'h1' | 'm5', number>>;
   txns?: Partial<Record<'h24' | 'h6' | 'h1' | 'm5', { buys?: number; sells?: number }>>;
   pairCreatedAt?: number; // epoch ms
+  info?: { websites?: DexWebsite[]; socials?: DexSocial[] };
+}
+
+/**
+ * Find an X/Twitter link in DEX Screener's `info.socials` (or, failing that,
+ * `info.websites`, since some tokens list x.com under websites instead).
+ * DEX Screener's data still generally labels this platform "twitter"
+ * internally even though the site is branded X, so we match both.
+ */
+function findXLink(info: DexPair['info']): string | null {
+  const isX = (s: string | undefined) => {
+    const v = (s ?? '').toLowerCase();
+    return v.includes('twitter') || v.includes('x.com') || v === 'x';
+  };
+
+  for (const s of info?.socials ?? []) {
+    if (isX(s.platform) || isX(s.type) || isX(s.url)) {
+      if (s.url) return s.url;
+      if (s.handle) return `https://x.com/${s.handle.replace(/^@/, '')}`;
+    }
+  }
+  for (const w of info?.websites ?? []) {
+    if (w.url && (w.url.includes('x.com/') || w.url.includes('twitter.com/'))) return w.url;
+  }
+  return null;
 }
 
 function num(v: unknown): number | null {
@@ -79,6 +114,7 @@ function mapPair(p: DexPair): PairData {
     buys24h: txns24?.buys ?? null,
     sells24h: txns24?.sells ?? null,
     pairCreatedAt: typeof p.pairCreatedAt === 'number' ? p.pairCreatedAt : null,
+    xLink: findXLink(p.info),
   };
 }
 

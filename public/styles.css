@@ -465,6 +465,9 @@ footer {
 .chart-link:hover {
   text-decoration: underline;
 }
+.chart-link.x-link {
+  margin-left: 8px;
+}
 
 .wallets-count {
   color: var(--text);

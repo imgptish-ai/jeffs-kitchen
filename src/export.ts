@@ -31,6 +31,7 @@ const CSV_COLUMNS = [
   'dexId',
   'pairAddress',
   'dexScreenerUrl',
+  'xLink',
   'wallets',
   'tokenCreatedAtIso',
   'pairCreatedAtIso',
@@ -63,6 +64,7 @@ function toCsvRow(r: TokenResult): Record<string, unknown> {
     dexId: r.dexId,
     pairAddress: r.pairAddress,
     dexScreenerUrl: r.dexScreenerUrl,
+    xLink: r.xLink ?? '',
     wallets: r.wallets, // toCsv joins arrays with "; "
     tokenCreatedAtIso: toIso(r.tokenCreatedAt),
     pairCreatedAtIso: toIso(r.pairCreatedAt),

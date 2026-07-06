@@ -130,6 +130,7 @@ A token is returned only if **all** of these are true within the window:
 4. 24h volume **≥ `MIN_VOLUME`** (default `$10,000`). If DEX Screener has no `h24` volume, the closest field (`h6`→`h1`→`m5`) is used, recorded in `volumeField`.
 5. Chain is **`solana`**.
 6. Token is **not** an ignored base/stable (SOL/USDC/USDT are always ignored; add more via `EXTRA_IGNORED_MINTS`).
+7. *(optional)* Has an **X/Twitter link** listed on DEX Screener, if `REQUIRE_X_LINK=true`. Off by default. This is a cheap check (comes from the same DEX Screener response, no extra API calls) and is applied early, so it also skips the expensive peak/creation-time lookups for tokens without one — saving time and Helius credits.
 
 Each result carries a `filterReason` string spelling out what passed, plus `athEstimate` (the number the band was tested against) and `peakConfidence`.
 
@@ -220,6 +221,7 @@ pm2 start "npm run scan:watch" --name memecoin-scanner
 | `MIN_VOLUME` | `10000` | Min 24h volume. |
 | `RESOLVE_PEAK_MARKET_CAP` | `true` | Estimate a real peak via GeckoTerminal history. |
 | `GECKO_DELAY_MS` | `2100` | Delay between GeckoTerminal calls (free ~30/min). |
+| `REQUIRE_X_LINK` | `false` | Only keep tokens with an X/Twitter link on DEX Screener. |
 | `MCAP_MODE` | `marketCap` | Which value is shown as "primary": `marketCap` \| `fdv` \| `observedAth`. |
 | `EXTRA_IGNORED_MINTS` | — | Extra mints to ignore (comma-separated). |
 | `TIMEZONE` | `America/Chicago` | IANA timezone for NA/EU. |

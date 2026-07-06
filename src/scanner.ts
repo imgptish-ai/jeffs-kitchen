@@ -109,11 +109,13 @@ export async function runScan(): Promise<TokenResult[]> {
     const currentMax = Math.max(pair.marketCap ?? 0, pair.fdv ?? 0);
     const ceilingEnabled = CONFIG.maxMarketCap > 0;
     const alreadyOverCeiling = ceilingEnabled && currentMax > CONFIG.maxMarketCap;
+    const missingRequiredX = CONFIG.requireXLink && !pair.xLink;
     if (
       CONFIG.ignoredMints.has(mint) ||
       pair.chainId !== 'solana' ||
       pair.volume24h < CONFIG.minVolume ||
-      alreadyOverCeiling
+      alreadyOverCeiling ||
+      missingRequiredX
     ) {
       continue;
     }
@@ -174,6 +176,7 @@ export async function runScan(): Promise<TokenResult[]> {
       peakMarketCap,
       volume24h: pair.volume24h,
       volumeField: pair.volumeField,
+      xLink: pair.xLink,
     });
     if (!outcome.passed) continue;
 
@@ -192,6 +195,7 @@ export async function runScan(): Promise<TokenResult[]> {
       tokenCreatedAt,
       tokenCreatedAtSource: tokenCreatedAt != null ? 'token' : null,
       pairCreatedAt: pair.pairCreatedAt,
+      xLink: pair.xLink,
       sessionCategory: session.sessionCategory,
       sessionCategoryReason: session.sessionCategoryReason,
       sessionTimestampUsed: session.sessionTimestampUsed,

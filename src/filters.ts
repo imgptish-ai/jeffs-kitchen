@@ -9,6 +9,7 @@
  *   - 24h volume (or closest field) >= MIN_VOLUME
  *   - chain is solana
  *   - not an ignored base/stable
+ *   - (optional) has an X/Twitter link on DEX Screener, if REQUIRE_X_LINK=true
  *
  * WHAT "PEAK" MEANS HERE:
  *   athEstimate = the highest of everything we know:
@@ -30,6 +31,7 @@ export interface FilterInput {
   peakMarketCap: number | null; // from GeckoTerminal history (may be null)
   volume24h: number;
   volumeField: string;
+  xLink: string | null;
 }
 
 export interface FilterOutcome {
@@ -64,6 +66,7 @@ export function applyFilters(input: FilterInput): FilterOutcome {
   const volOk = input.volume24h >= CONFIG.minVolume;
   const solOk = input.chainId === 'solana';
   const notIgnored = !CONFIG.ignoredMints.has(input.mint);
+  const xOk = !CONFIG.requireXLink || Boolean(input.xLink);
 
   notes.push(`${boughtOk ? '\u2713' : '\u2717'} bought by ${input.walletCount} wallet(s)`);
   notes.push(
@@ -75,7 +78,10 @@ export function applyFilters(input: FilterInput): FilterOutcome {
   notes.push(`${volOk ? '\u2713' : '\u2717'} vol(${input.volumeField})=${usd(input.volume24h)} >= ${usd(CONFIG.minVolume)}`);
   notes.push(`${solOk ? '\u2713' : '\u2717'} chain=${input.chainId}`);
   if (!notIgnored) notes.push('\u2717 token is an ignored base/stable');
+  if (CONFIG.requireXLink) {
+    notes.push(`${xOk ? '\u2713' : '\u2717'} has X/Twitter link`);
+  }
 
-  const passed = boughtOk && floorOk && ceilingOk && volOk && solOk && notIgnored;
+  const passed = boughtOk && floorOk && ceilingOk && volOk && solOk && notIgnored && xOk;
   return { passed, reason: notes.join('; '), athEstimate, peakConfidence };
 }
