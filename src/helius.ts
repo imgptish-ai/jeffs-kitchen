@@ -19,6 +19,22 @@ import type { WalletBuy } from './types';
 const ENHANCED_TX_BASE = 'https://api.helius.xyz/v0/addresses';
 const rpcUrl = () => `https://mainnet.helius-rpc.com/?api-key=${CONFIG.heliusApiKey}`;
 
+// Lightweight call counter so each scan can report exactly how many Helius
+// requests it made and where they went — useful for correlating against your
+// Helius dashboard usage and deciding what to tune.
+const stats = { walletTxCalls: 0, creationTimeCalls: 0 };
+
+/** Current call counts since the process started (or since resetHeliusStats()). */
+export function getHeliusStats(): { walletTxCalls: number; creationTimeCalls: number; total: number } {
+  return { ...stats, total: stats.walletTxCalls + stats.creationTimeCalls };
+}
+
+/** Reset counters — call at the start of a scan if you want per-run numbers. */
+export function resetHeliusStats(): void {
+  stats.walletTxCalls = 0;
+  stats.creationTimeCalls = 0;
+}
+
 interface HeliusTokenTransfer {
   fromUserAccount?: string;
   toUserAccount?: string;
@@ -91,6 +107,7 @@ export async function getWalletBuys(wallet: string, sinceMs: number): Promise<Wa
     if (before) url.searchParams.set('before', before);
 
     const txs = await fetchJson<HeliusTx[]>(url.toString());
+    stats.walletTxCalls++;
     if (!Array.isArray(txs) || txs.length === 0) break;
 
     for (const tx of txs) {
@@ -155,6 +172,7 @@ export async function getTokenCreationTime(mint: string): Promise<number | null>
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
+    stats.creationTimeCalls++;
 
     if (res.error) {
       log.warn(`getSignaturesForAddress error for ${mint}: ${res.error.message ?? 'unknown'}`);
