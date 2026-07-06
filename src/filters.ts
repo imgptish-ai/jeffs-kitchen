@@ -5,16 +5,20 @@
  * A token passes only if ALL hold:
  *   - bought by >= 1 imported wallet
  *   - its estimated PEAK market cap >= MIN_MARKET_CAP (same floor for every
- *     token — no special treatment based on socials, X links, or anything
- *     else that can be paid for)
+ *     token — no special treatment based on socials or anything else)
  *   - its estimated PEAK market cap <= MAX_MARKET_CAP (0 disables the ceiling)
  *   - 24h volume (or closest field) >= MIN_VOLUME
  *   - chain is solana
  *   - not an ignored base/stable
- *   - (optional) has an X/Twitter link on DEX Screener, if REQUIRE_X_LINK=true
  *   - (optional, on by default) token's AGE at scan time is inside
  *     [CREATION_MIN_AGE_HOURS, CREATION_MAX_AGE_HOURS], if
  *     REQUIRE_CREATION_IN_WINDOW=true.
+ *
+ * NOTE: there is intentionally NO requirement or bonus based on whether a
+ * token has an X/Twitter link. Having socials on DEX Screener is usually
+ * free (baked into token metadata at creation via pump.fun-style launchpads)
+ * and is not a reliable legitimacy or payment signal either way, so it plays
+ * no role in filtering here.
  *
  * WHAT "PEAK" MEANS HERE:
  *   athEstimate = max(peakMarketCap from GeckoTerminal history, observed ATH
@@ -33,7 +37,6 @@ export interface FilterInput {
   peakMarketCap: number | null; // from GeckoTerminal history (may be null)
   volume24h: number;
   volumeField: string;
-  xLink: string | null;
   /** Token age at scan time, in hours. Null if no creation-ish timestamp was resolvable. */
   creationAgeHours: number | null;
   /** Which timestamp creationAgeHours was computed from. */
@@ -69,17 +72,12 @@ export function applyFilters(input: FilterInput): FilterOutcome {
     input.peakMarketCap != null ? 'history' : 'observed-or-current';
 
   const boughtOk = input.walletCount >= 1;
-  // Same floor and ceiling for every token — no lower bar for having socials
-  // attached. (Having X/website info populated on DEX Screener frequently
-  // means the project paid for DEX Screener's "Enhanced Token Info" listing
-  // service, not that it's more legitimate — so we don't treat it as one.)
   const floorOk = athEstimate >= CONFIG.minMarketCap;
   const ceilingEnabled = CONFIG.maxMarketCap > 0;
   const ceilingOk = !ceilingEnabled || athEstimate <= CONFIG.maxMarketCap;
   const volOk = input.volume24h >= CONFIG.minVolume;
   const solOk = input.chainId === 'solana';
   const notIgnored = !CONFIG.ignoredMints.has(input.mint);
-  const xOk = !CONFIG.requireXLink || Boolean(input.xLink);
   const ageOk =
     !CONFIG.requireCreationInWindow ||
     (input.creationAgeHours != null &&
@@ -96,15 +94,12 @@ export function applyFilters(input: FilterInput): FilterOutcome {
   notes.push(`${volOk ? '\u2713' : '\u2717'} vol(${input.volumeField})=${usd(input.volume24h)} >= ${usd(CONFIG.minVolume)}`);
   notes.push(`${solOk ? '\u2713' : '\u2717'} chain=${input.chainId}`);
   if (!notIgnored) notes.push('\u2717 token is an ignored base/stable');
-  if (CONFIG.requireXLink) {
-    notes.push(`${xOk ? '\u2713' : '\u2717'} has X/Twitter link`);
-  }
   if (CONFIG.requireCreationInWindow) {
     notes.push(
       `${ageOk ? '\u2713' : '\u2717'} age=${hrs(input.creationAgeHours)} in [${CONFIG.creationMinAgeHours}h-${CONFIG.creationMaxAgeHours}h] [${input.creationTimestampSource}]`,
     );
   }
 
-  const passed = boughtOk && floorOk && ceilingOk && volOk && solOk && notIgnored && xOk && ageOk;
+  const passed = boughtOk && floorOk && ceilingOk && volOk && solOk && notIgnored && ageOk;
   return { passed, reason: notes.join('; '), athEstimate, peakConfidence };
 }
