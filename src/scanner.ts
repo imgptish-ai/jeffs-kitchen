@@ -29,9 +29,12 @@ import type { TokenBuyAggregate, TokenResult, WalletBuy } from './types';
 /** Aggregate raw per-wallet buys into per-token records. */
 function aggregateBuys(buys: WalletBuy[]): Map<string, TokenBuyAggregate> {
   const map = new Map<string, TokenBuyAggregate>();
+
   for (const b of buys) {
-    if (CONFIG.ignoredMints.has(b.mint)) continue; // safety net
+    if (CONFIG.ignoredMints.has(b.mint)) continue;
+
     const agg = map.get(b.mint);
+
     if (!agg) {
       map.set(b.mint, {
         mint: b.mint,
@@ -45,6 +48,7 @@ function aggregateBuys(buys: WalletBuy[]): Map<string, TokenBuyAggregate> {
       if (b.boughtAt < agg.firstBuyAt) agg.firstBuyAt = b.boughtAt;
     }
   }
+
   return map;
 }
 
@@ -54,6 +58,10 @@ export async function runScan(): Promise<TokenResult[]> {
 
   const now = Date.now();
   const sinceMs = now - CONFIG.scanWindowHours * 3600 * 1000;
+
+  // This is the actual cutoff for "token is too old."
+  // For your current config, this means older than 13 hours ago.
+  const creationMaxAgeCutoffMs = now - CONFIG.creationMaxAgeHours * 3600 * 1000;
 
   log.step(
     `Scan started ${formatInZone(now, CONFIG.timezone)} | wallet-buy lookback = last ${CONFIG.scanWindowHours}h ` +
@@ -69,8 +77,10 @@ export async function runScan(): Promise<TokenResult[]> {
 
   // 2. per-wallet buys
   const allBuys: WalletBuy[] = [];
+
   for (let i = 0; i < wallets.length; i++) {
     const wallet = wallets[i]!;
+
     try {
       const buys = await getWalletBuys(wallet, sinceMs);
       allBuys.push(...buys);
@@ -78,13 +88,16 @@ export async function runScan(): Promise<TokenResult[]> {
     } catch (err) {
       log.warn(`Wallet ${wallet} failed: ${(err as Error).message}`);
     }
+
     await sleep(CONFIG.requestDelayMs);
   }
 
   // 3. aggregate
   const aggregates = aggregateBuys(allBuys);
   const mints = [...aggregates.keys()];
+
   log.info(`Found ${mints.length} unique non-base token(s) bought across all wallets.`);
+
   if (mints.length === 0) {
     const empty: TokenResult[] = [];
     finish(empty);
@@ -101,40 +114,54 @@ export async function runScan(): Promise<TokenResult[]> {
   const results: TokenResult[] = [];
 
   // Track how many tokens actually reach the expensive Helius/GeckoTerminal
-  // stage (vs. the ones cheaply skipped above), and print progress every 10
-  // so a long run never looks frozen for 20-30+ minutes with no output.
+  // stage versus the ones cheaply skipped above.
   let expensiveCount = 0;
+
   const expensiveTotal = mints.filter((m) => {
     const p = pairs.get(m);
     if (!p) return false;
+
     const cMax = Math.max(p.marketCap ?? 0, p.fdv ?? 0);
     const overCeiling = CONFIG.maxMarketCap > 0 && cMax > CONFIG.maxMarketCap;
-    const tooOld = CONFIG.requireCreationInWindow && p.pairCreatedAt != null && p.pairCreatedAt < sinceMs;
-    return !CONFIG.ignoredMints.has(m) && p.chainId === 'solana' && p.volume24h >= CONFIG.minVolume && !overCeiling && !tooOld;
+
+    const tooOld =
+      CONFIG.requireCreationInWindow &&
+      p.pairCreatedAt != null &&
+      p.pairCreatedAt < creationMaxAgeCutoffMs;
+
+    return (
+      !CONFIG.ignoredMints.has(m) &&
+      p.chainId === 'solana' &&
+      p.volume24h >= CONFIG.minVolume &&
+      !overCeiling &&
+      !tooOld
+    );
   }).length;
+
   log.step(`${expensiveTotal} of ${mints.length} token(s) need the slower per-token lookups this run.`);
 
   for (const mint of mints) {
     const agg = aggregates.get(mint)!;
     const pair = pairs.get(mint);
-    if (!pair) continue; // no market data -> can't meet mcap/vol thresholds
 
-    // Cheap pre-checks: skip the expensive lookups (Helius creation time +
-    // GeckoTerminal peak) for coins that are ALREADY disqualified and can't be
-    // rescued by a higher peak. Volume/chain/ignored can only exclude, and if
-    // the CURRENT mcap already exceeds the ceiling, the peak (which is >=
-    // current) can't bring it back under. This saves Helius calls too.
+    if (!pair) continue;
+
+    // Cheap pre-checks.
+    // These skip expensive lookups only when the token is already impossible
+    // to pass based on current data.
     const currentMax = Math.max(pair.marketCap ?? 0, pair.fdv ?? 0);
+
     const ceilingEnabled = CONFIG.maxMarketCap > 0;
     const alreadyOverCeiling = ceilingEnabled && currentMax > CONFIG.maxMarketCap;
-    // A trading pair can never be created before its own token, so if the
-    // pair is already older than the band's outer edge (creationMaxAgeHours,
-    // which sinceMs is derived from), the token is definitely too old too —
-    // safe to exclude without spending a Helius call to check further. The
-    // "too young" side can't be pre-proven this way, since a pair can lag
-    // well behind true token creation (e.g. later migration to a new pool).
+
+    // If the pair is older than the max creation age, the token itself is
+    // definitely too old too because the pair cannot exist before the token.
+    // For your current config, this excludes anything proven older than 13h.
     const pairProvesTooOld =
-      CONFIG.requireCreationInWindow && pair.pairCreatedAt != null && pair.pairCreatedAt < sinceMs;
+      CONFIG.requireCreationInWindow &&
+      pair.pairCreatedAt != null &&
+      pair.pairCreatedAt < creationMaxAgeCutoffMs;
+
     if (
       CONFIG.ignoredMints.has(mint) ||
       pair.chainId !== 'solana' ||
@@ -146,53 +173,72 @@ export async function runScan(): Promise<TokenResult[]> {
     }
 
     expensiveCount++;
+
     if (expensiveCount === 1 || expensiveCount % 10 === 0 || expensiveCount === expensiveTotal) {
       log.info(`Processing token ${expensiveCount}/${expensiveTotal} (${results.length} passed so far)…`);
     }
 
-    // Best-effort true token creation time (may be null -> we fall back later).
+    // Best-effort true token creation time.
     let tokenCreatedAt: number | null = null;
+
     try {
       tokenCreatedAt = await getTokenCreationTime(mint);
     } catch (err) {
       log.warn(`Token creation lookup failed for ${mint}: ${(err as Error).message}`);
     }
+
     await sleep(CONFIG.requestDelayMs);
 
-    // Creation age check: true creation time if we have it, else DEX
-    // Screener's pairCreatedAt as an honest fallback. Unknown (neither
-    // available) does NOT count as in-band — see filters.ts.
+    // Creation age check:
+    // Prefer real token creation time. If unavailable, fall back to DEX
+    // Screener pairCreatedAt. If neither exists, filters.ts rejects it.
     const creationTimestamp = tokenCreatedAt ?? pair.pairCreatedAt ?? null;
+
     const creationTimestampSource: 'token' | 'pair' | 'unknown' =
       tokenCreatedAt != null ? 'token' : pair.pairCreatedAt != null ? 'pair' : 'unknown';
-    const creationAgeHours = creationTimestamp != null ? (now - creationTimestamp) / 3600000 : null;
 
-    // Estimate a REAL peak market cap from GeckoTerminal price history.
-    // peak market cap = current market cap scaled by (peak price / current price),
-    // which assumes supply is ~constant (true for typical memecoins).
+    const creationAgeHours =
+      creationTimestamp != null ? (now - creationTimestamp) / 3600000 : null;
+
+    // Estimate a real peak market cap from GeckoTerminal price history.
     let peakMarketCap: number | null = null;
     let peakPriceUsd: number | null = null;
     let peakAt: number | null = null;
+
     const baseMcap = pair.marketCap ?? pair.fdv ?? null;
-    if (CONFIG.resolvePeakMarketCap && pair.pairAddress && pair.priceUsd && pair.priceUsd > 0 && baseMcap) {
+
+    if (
+      CONFIG.resolvePeakMarketCap &&
+      pair.pairAddress &&
+      pair.priceUsd &&
+      pair.priceUsd > 0 &&
+      baseMcap
+    ) {
       try {
         const peak = await getPeakPriceUsd(pair.pairAddress, mint);
+
         if (peak) {
           peakPriceUsd = peak.peakPriceUsd;
           peakAt = peak.peakAt;
-          // Peak can't be below the current price; clamp for safety.
+
+          // Peak cannot be below the current price; clamp for safety.
           const ratio = Math.max(peak.peakPriceUsd / pair.priceUsd, 1);
           peakMarketCap = baseMcap * ratio;
         }
       } catch (err) {
         log.warn(`Peak lookup failed for ${mint}: ${(err as Error).message}`);
       }
+
       await sleep(CONFIG.geckoDelayMs);
     }
 
-    // Observed ATH: fold in the current snapshot AND the history-based peak,
-    // so the local ATH store is seeded with real peaks from the first run.
-    const snapshotMcap = Math.max(pair.marketCap ?? 0, pair.fdv ?? 0, peakMarketCap ?? 0) || null;
+    // Observed ATH: fold in current snapshot and history-based peak.
+    const snapshotMcap = Math.max(
+      pair.marketCap ?? 0,
+      pair.fdv ?? 0,
+      peakMarketCap ?? 0,
+    ) || null;
+
     const observedAth = athStore.update(mint, snapshotMcap, now);
 
     // Primary mcap per configured mode.
@@ -203,7 +249,11 @@ export async function runScan(): Promise<TokenResult[]> {
           ? observedAth
           : pair.marketCap;
 
-    // Filter (peak/ATH band).
+    // Filter:
+    // filters.ts handles:
+    //   - ATH peak market cap between CONFIG.minMarketCap and CONFIG.maxMarketCap
+    //   - creation age between CONFIG.creationMinAgeHours and CONFIG.creationMaxAgeHours
+    //   - volume, Solana chain, ignored mints, and wallet count
     const outcome = applyFilters({
       mint,
       chainId: pair.chainId,
@@ -217,6 +267,7 @@ export async function runScan(): Promise<TokenResult[]> {
       creationAgeHours,
       creationTimestampSource,
     });
+
     if (!outcome.passed) continue;
 
     // Classify NA/EU using timestamp priority.
@@ -268,11 +319,10 @@ export async function runScan(): Promise<TokenResult[]> {
 
   athStore.save();
 
-  // Newest-created first. True token creation time when known, else DEX
-  // Screener's pairCreatedAt as the fallback (same priority used elsewhere).
-  // A token with neither (shouldn't happen when REQUIRE_CREATION_IN_WINDOW is
-  // on, since that requires a resolvable timestamp to pass) sorts last.
-  const creationTimeFor = (r: TokenResult): number => r.tokenCreatedAt ?? r.pairCreatedAt ?? -Infinity;
+  // Newest-created first.
+  const creationTimeFor = (r: TokenResult): number =>
+    r.tokenCreatedAt ?? r.pairCreatedAt ?? -Infinity;
+
   results.sort((a, b) => creationTimeFor(b) - creationTimeFor(a));
 
   finish(results);
@@ -285,11 +335,15 @@ function finish(results: TokenResult[]): void {
   const eu = results.filter((r) => r.sessionCategory === 'EU');
 
   log.step(`Matched ${results.length} token(s): ${na.length} NA, ${eu.length} EU.`);
-  for (const r of results) log.info(summarizeResult(r));
+
+  for (const r of results) {
+    log.info(summarizeResult(r));
+  }
 
   printConsoleTable(results);
 
   const heliusStats = getHeliusStats();
+
   log.step(
     `Helius calls this run: ${heliusStats.total} total ` +
       `(${heliusStats.walletTxCalls} wallet-transaction, ${heliusStats.creationTimeCalls} token-creation-time). ` +
@@ -297,7 +351,9 @@ function finish(results: TokenResult[]): void {
   );
 
   const outDir = writeAllOutputs({ all: results, na, eu });
+
   log.step(`Wrote results to ${outDir}`);
+
   log.info(
     `Files: ${CONFIG.files.mainJson}, ${CONFIG.files.mainCsv}, ` +
       `${CONFIG.files.allJson}/${CONFIG.files.naJson}/${CONFIG.files.euJson}, ` +
