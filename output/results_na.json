@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "name": "AletheiaX",
+    "symbol": "ALETHIA",
+    "contractAddress": "K1KBa3iDAjv53voKNYe8mKXkciZ2EN1LoeeMFgzEASY",
+    "marketCap": 4452.78,
+    "peakMarketCap": 17511.196036565438,
+    "xLink": "",
+    "wallets": [
+      "suqh5sHtr8HyJ7q8scBimULPkPpA557prMG47xCHQfK",
+      "FxN3VZ4BosL5urG2yoeQ156JSdmavm9K5fdLxjkPmaMR",
+      "2fg5QD1eD7rzNNCsvnhmXFm5hqNgwTTG8p7kQ6f3rx6f"
+    ],
+    "pairCreatedAt": "2026-07-06T15:14:13.000Z"
+  },
+  {
+    "name": "dogwifoutsupply",
+    "symbol": "wifout",
+    "contractAddress": "FRkZQtHyqAeymEPDuWJNhcMJ4vjdUt5xZn2TxMixxQcn",
+    "marketCap": 2249.36,
+    "peakMarketCap": 10846.586402550383,
+    "xLink": "",
+    "wallets": [
+      "CyaE1VxvBrahnPWkqm5VsdCvyS2QmNht2UFrKJHga54o"
+    ],
+    "pairCreatedAt": "2026-07-06T15:11:04.000Z"
+  },
+  {
+    "name": "Crypto coin",
+    "symbol": "CRYPTO",
+    "contractAddress": "ACR86HtzCABPKVBUSmp2miXY9SNNnFC1kuMbwT1pump",
+    "marketCap": 2316.25,
+    "peakMarketCap": 16176.067661657753,
+    "xLink": "",
+    "wallets": [
+      "831yhv67QpKqLBJjbmw2xoDUeeFHGUx8RnuRj9imeoEs",
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
+      "CgaA9a1JwAXJyfHuvZ7VW8YfTVRkdiT5mjBBSKcg7Rz5",
+      "H31vEBxSJk1nQdUN11qZgZyhScyShhscKhvhZZU3dQoU"
+    ],
+    "pairCreatedAt": "2026-07-06T15:07:13.000Z"
+  },
+  {
+    "name": "big crypto guy",
+    "symbol": "TRUMP",
+    "contractAddress": "DiCsQvmSN2cyFzYrA1uX2o7xmBDQx4v9D5ZLg1iYbonk",
+    "marketCap": 2055.82,
+    "peakMarketCap": 13683.996237817044,
+    "xLink": "",
+    "wallets": [
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
+      "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9"
+    ],
+    "pairCreatedAt": "2026-07-06T15:05:16.000Z"
+  },
+  {
+    "name": "just a big crypto guy",
+    "symbol": "trump",
+    "contractAddress": "rWchX68W17ndBteJudfoCieuDpY6xtDox52PAztbonk",
+    "marketCap": 2108.25,
+    "peakMarketCap": 17967.59623111398,
+    "xLink": "",
+    "wallets": [
+      "831yhv67QpKqLBJjbmw2xoDUeeFHGUx8RnuRj9imeoEs",
+      "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9",
+      "ardinRsN1mNYVeoJWTBsWeYeXvuR9UUDGMsCDKpb6AT",
+      "75GMVrr2xfgAeybuNg1VMHqFE3GTFJLzEHo6xC4MwUzF",
+      "H31vEBxSJk1nQdUN11qZgZyhScyShhscKhvhZZU3dQoU"
+    ],
+    "pairCreatedAt": "2026-07-06T15:02:46.000Z"
+  }
+]
