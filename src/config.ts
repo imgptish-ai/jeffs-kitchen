@@ -34,14 +34,10 @@ const DEFAULT_IGNORED_MINTS = [
   'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB', // USDT
 ];
 
-// The creation-age band (see requireCreationInWindow below) determines how
-// far back wallet buys need to be scanned: a token that's exactly
-// creationMaxAgeHours old could have been bought any time between its
-// creation and now, so the buy lookback must reach at least that far back.
-// Computed as locals (not inline in CONFIG) so scanWindowHours can default
-// from it below.
-const creationMinAgeHours = num(process.env.CREATION_MIN_AGE_HOURS, 8);
-const creationMaxAgeHours = num(process.env.CREATION_MAX_AGE_HOURS, 16);
+// The creation-age band determines how far back wallet buys need to be scanned.
+// Since you want tokens created 9-13 hours ago, this defaults to 9 and 13.
+const creationMinAgeHours = num(process.env.CREATION_MIN_AGE_HOURS, 9);
+const creationMaxAgeHours = num(process.env.CREATION_MAX_AGE_HOURS, 13);
 
 export const CONFIG = {
   // ---- Secrets ----
@@ -55,20 +51,16 @@ export const CONFIG = {
 
   // ---- Filters (operate on the PEAK / ATH market-cap estimate, not current) ----
   // A coin passes only if its estimated peak market cap is within this band.
-  minMarketCap: num(process.env.MIN_MARKET_CAP, 8_000), // floor: peak must have reached this
-  maxMarketCap: num(process.env.MAX_MARKET_CAP, 25_000), // ceiling: peak must NOT exceed this. 0 = no ceiling.
+  minMarketCap: num(process.env.MIN_MARKET_CAP, 8_000),
+  maxMarketCap: num(process.env.MAX_MARKET_CAP, 25_000),
   minVolume: num(process.env.MIN_VOLUME, 10_000),
 
   /**
    * Require the token's AGE at scan time to fall inside [creationMinAgeHours,
-   * creationMaxAgeHours] — e.g. "created 8-16 hours ago as of right now".
+   * creationMaxAgeHours] — for you, this means created 9-13 hours ago.
+   *
    * Uses true token creation time when known, otherwise falls back to DEX
-   * Screener's pairCreatedAt (honestly labeled). A pair can never be created
-   * before its token exists, so a pair older than creationMaxAgeHours proves
-   * the token is too old too — letting us skip the expensive lookup entirely
-   * for those. The "too young" side can't be pre-proven the same way (a pair
-   * can lag well behind true token creation), so that side always needs the
-   * real lookup (or the honest pairCreatedAt-based fallback).
+   * Screener's pairCreatedAt.
    */
   requireCreationInWindow: bool(process.env.REQUIRE_CREATION_IN_WINDOW, true),
   creationMinAgeHours,
@@ -77,6 +69,7 @@ export const CONFIG = {
   // ---- Peak / ATH estimation (GeckoTerminal, free, no API key, no Helius cost) ----
   /** Pull historical daily candles to estimate a real peak market cap. */
   resolvePeakMarketCap: bool(process.env.RESOLVE_PEAK_MARKET_CAP, true),
+
   /** Delay between GeckoTerminal calls (free tier ~30/min -> keep >= 2000ms). */
   geckoDelayMs: num(process.env.GECKO_DELAY_MS, 2100),
 
@@ -84,7 +77,10 @@ export const CONFIG = {
   mcapMode: (process.env.MCAP_MODE ?? 'marketCap') as 'marketCap' | 'fdv' | 'observedAth',
 
   /** Mints to ignore (base/stable tokens). Defaults + EXTRA_IGNORED_MINTS. */
-  ignoredMints: new Set<string>([...DEFAULT_IGNORED_MINTS, ...list(process.env.EXTRA_IGNORED_MINTS)]),
+  ignoredMints: new Set<string>([
+    ...DEFAULT_IGNORED_MINTS,
+    ...list(process.env.EXTRA_IGNORED_MINTS),
+  ]),
 
   // ---- Session classification ----
   timezone: process.env.TIMEZONE ?? 'America/Chicago',
@@ -136,6 +132,7 @@ export function assertConfig(): void {
         '(free at https://www.helius.dev/).',
     );
   }
+
   if (CONFIG.requireCreationInWindow && CONFIG.creationMinAgeHours > CONFIG.creationMaxAgeHours) {
     throw new Error(
       `CREATION_MIN_AGE_HOURS (${CONFIG.creationMinAgeHours}) is greater than ` +
