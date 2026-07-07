@@ -100,6 +100,20 @@ export async function runScan(): Promise<TokenResult[]> {
   const athStore = new AthStore();
   const results: TokenResult[] = [];
 
+  // Track how many tokens actually reach the expensive Helius/GeckoTerminal
+  // stage (vs. the ones cheaply skipped above), and print progress every 10
+  // so a long run never looks frozen for 20-30+ minutes with no output.
+  let expensiveCount = 0;
+  const expensiveTotal = mints.filter((m) => {
+    const p = pairs.get(m);
+    if (!p) return false;
+    const cMax = Math.max(p.marketCap ?? 0, p.fdv ?? 0);
+    const overCeiling = CONFIG.maxMarketCap > 0 && cMax > CONFIG.maxMarketCap;
+    const tooOld = CONFIG.requireCreationInWindow && p.pairCreatedAt != null && p.pairCreatedAt < sinceMs;
+    return !CONFIG.ignoredMints.has(m) && p.chainId === 'solana' && p.volume24h >= CONFIG.minVolume && !overCeiling && !tooOld;
+  }).length;
+  log.step(`${expensiveTotal} of ${mints.length} token(s) need the slower per-token lookups this run.`);
+
   for (const mint of mints) {
     const agg = aggregates.get(mint)!;
     const pair = pairs.get(mint);
@@ -129,6 +143,11 @@ export async function runScan(): Promise<TokenResult[]> {
       pairProvesTooOld
     ) {
       continue;
+    }
+
+    expensiveCount++;
+    if (expensiveCount === 1 || expensiveCount % 10 === 0 || expensiveCount === expensiveTotal) {
+      log.info(`Processing token ${expensiveCount}/${expensiveTotal} (${results.length} passed so far)…`);
     }
 
     // Best-effort true token creation time (may be null -> we fall back later).
