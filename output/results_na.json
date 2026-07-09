@@ -1,10 +1,37 @@
 [
   {
+    "name": "Sidelined",
+    "symbol": "SIDELINED",
+    "contractAddress": "2WtUR7mUe545YXTmGj5ZBLZSR2haKcEsPQKG4dC9djQc",
+    "marketCap": 2197.52,
+    "peakMarketCap": 10429.07508544746,
+    "pairCreatedAt": "07/08/2026, 11:03:46 CDT",
+    "xLink": "",
+    "wallets": [
+      "suqh5sHtr8HyJ7q8scBimULPkPpA557prMG47xCHQfK",
+      "FxN3VZ4BosL5urG2yoeQ156JSdmavm9K5fdLxjkPmaMR",
+      "2fg5QD1eD7rzNNCsvnhmXFm5hqNgwTTG8p7kQ6f3rx6f",
+      "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9"
+    ]
+  },
+  {
+    "name": "PROSPERITY",
+    "symbol": "PROSPERITY",
+    "contractAddress": "GbBe4VJzB7SkDNUgoNFSbEjcH23KAo1ZS6XQMy77pump",
+    "marketCap": 2164.13,
+    "peakMarketCap": 10523.074527390245,
+    "pairCreatedAt": "07/08/2026, 10:53:40 CDT",
+    "xLink": "",
+    "wallets": [
+      "Bi4rd5FH5bYEN8scZ7wevxNZyNmKHdaBcvewdPFxYdLt"
+    ]
+  },
+  {
     "name": "AnsemKintaraManletCatsTriplet",
     "symbol": "AKMCT",
     "contractAddress": "Z6Rp63UXoqwtu46SRB4FC3ec5rYKskExk8kJfd1pump",
-    "marketCap": 2179.3,
-    "peakMarketCap": 13612.951719672537,
+    "marketCap": 2181.56,
+    "peakMarketCap": 13614.572596487913,
     "pairCreatedAt": "07/08/2026, 10:49:02 CDT",
     "xLink": "",
     "wallets": [
@@ -17,7 +44,7 @@
     "name": "AnsemBot",
     "symbol": "BOTSEM",
     "contractAddress": "6oequGBBx8LQaknngt8gbvAht2MC68JTQUHVrufHpump",
-    "marketCap": 2635.21,
+    "marketCap": 2630.25,
     "peakMarketCap": 20143.65153800492,
     "pairCreatedAt": "07/08/2026, 10:47:27 CDT",
     "xLink": "https://x.com/koopatroopwa/status/2074882942212489726",
@@ -74,8 +101,8 @@
     "name": "return to tradition",
     "symbol": "tradition",
     "contractAddress": "EeGcwDXZU57RqVZgyy4Tt1n1fRqwLvM1f7SBjAx9pump",
-    "marketCap": 2173.41,
-    "peakMarketCap": 12656.249003529467,
+    "marketCap": 2186.74,
+    "peakMarketCap": 12657.935981930443,
     "pairCreatedAt": "07/08/2026, 10:17:31 CDT",
     "xLink": "https://x.com/thenormiecalvin/status/2074883739071439191",
     "wallets": [
