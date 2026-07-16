@@ -1,1 +1,115 @@
-[]
+[
+  {
+    "name": "TJeetR",
+    "symbol": "TJeetR",
+    "contractAddress": "FYeS7eeMHu4FSrJd3TQTHSUiaeUDEt8KR6hSvf1Ppump",
+    "marketCap": 2179.47,
+    "peakMarketCap": 12197.568022959154,
+    "pairCreatedAt": "07/15/2026, 10:12:45 CDT",
+    "xLink": "",
+    "wallets": [
+      "Hw5UKBU5k3YudnGwaykj5E8cYUidNMPuEewRRar5Xoc7",
+      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1"
+    ]
+  },
+  {
+    "name": "BONK FAMILY",
+    "symbol": "FAMILY",
+    "contractAddress": "3SQtVsCbaLWpn9AmznUFyLGbURmYJoL86taiymRMbonk",
+    "marketCap": 3293.19,
+    "peakMarketCap": 10110.577629916212,
+    "pairCreatedAt": "07/15/2026, 10:11:06 CDT",
+    "xLink": "",
+    "wallets": [
+      "831yhv67QpKqLBJjbmw2xoDUeeFHGUx8RnuRj9imeoEs",
+      "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9",
+      "ardinRsN1mNYVeoJWTBsWeYeXvuR9UUDGMsCDKpb6AT",
+      "FAicXNV5FVqtfbpn4Zccs71XcfGeyxBSGbqLDyDJZjke"
+    ]
+  },
+  {
+    "name": "Nasdog",
+    "symbol": "Luci",
+    "contractAddress": "9yN8NFhJfXRqopE8xtC44rx3RCir3oBbM7rHFs3Ypump",
+    "marketCap": 2178.62,
+    "peakMarketCap": 14809.080456982814,
+    "pairCreatedAt": "07/15/2026, 10:07:05 CDT",
+    "xLink": "",
+    "wallets": [
+      "suqh5sHtr8HyJ7q8scBimULPkPpA557prMG47xCHQfK",
+      "PMJA8UQDyWTFw2Smhyp9jGA6aTaP7jKHR7BPudrgyYN",
+      "CfkaAru9ArJ2tAStYHvbAyRBJL3EhDzsWYV2KYg9shxB",
+      "FxN3VZ4BosL5urG2yoeQ156JSdmavm9K5fdLxjkPmaMR",
+      "2fg5QD1eD7rzNNCsvnhmXFm5hqNgwTTG8p7kQ6f3rx6f",
+      "CeZbzsqje88U7GCCrAiGUr5BrZrBJ3AkQMyG9aggDiqQ"
+    ]
+  },
+  {
+    "name": "Nasdog",
+    "symbol": "AK0961",
+    "contractAddress": "44QuLZqBnz1EvWs5iBQ8LzoxU41BNNwQZsG3AASzpump",
+    "marketCap": 2299.11,
+    "peakMarketCap": 14719.299804364238,
+    "pairCreatedAt": "07/15/2026, 10:03:56 CDT",
+    "xLink": "",
+    "wallets": [
+      "4sAUSQFdvWRBxR8UoLBYbw8CcXuwXWxnN8pXa4mtm5nU",
+      "suqh5sHtr8HyJ7q8scBimULPkPpA557prMG47xCHQfK",
+      "CfkaAru9ArJ2tAStYHvbAyRBJL3EhDzsWYV2KYg9shxB",
+      "FxN3VZ4BosL5urG2yoeQ156JSdmavm9K5fdLxjkPmaMR",
+      "2fg5QD1eD7rzNNCsvnhmXFm5hqNgwTTG8p7kQ6f3rx6f",
+      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1"
+    ]
+  },
+  {
+    "name": "Nasdogs",
+    "symbol": "Nasdogs",
+    "contractAddress": "jC6b5Mqnmv2ybCpnX3vR3dyrc1QnDYC77pFqKTupump",
+    "marketCap": 2162.66,
+    "peakMarketCap": 11406.036998625179,
+    "pairCreatedAt": "07/15/2026, 10:03:43 CDT",
+    "xLink": "",
+    "wallets": [
+      "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9",
+      "ardinRsN1mNYVeoJWTBsWeYeXvuR9UUDGMsCDKpb6AT"
+    ]
+  },
+  {
+    "name": "Nasdogs",
+    "symbol": "Nasdogs",
+    "contractAddress": "5T388c4GDvZMTMnRwvX2MtQWP1nLVk5ZcKrHtvdhpump",
+    "marketCap": 2180.52,
+    "peakMarketCap": 11554.611399900166,
+    "pairCreatedAt": "07/15/2026, 10:02:08 CDT",
+    "xLink": "",
+    "wallets": [
+      "D9gQ6RhKEpnobPBUdWY5bPQt2p3zGk3iVz6ChpUi2ArA",
+      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1"
+    ]
+  },
+  {
+    "name": "nasdog",
+    "symbol": "NASDOG",
+    "contractAddress": "9rVPYvcQmvSwYDeiyxmYLLZRthuMZ9DBUuPc9fsLpump",
+    "marketCap": 2162.63,
+    "peakMarketCap": 12684.6078016337,
+    "pairCreatedAt": "07/15/2026, 10:01:11 CDT",
+    "xLink": "",
+    "wallets": [
+      "H31vEBxSJk1nQdUN11qZgZyhScyShhscKhvhZZU3dQoU"
+    ]
+  },
+  {
+    "name": "nasdog",
+    "symbol": "NASDOG",
+    "contractAddress": "GNvhYUMQSWrwzw2ZxnPi8Utvd9ztjRDgMESy1S5Npump",
+    "marketCap": 2213.77,
+    "peakMarketCap": 15574.959398702647,
+    "pairCreatedAt": "07/15/2026, 10:00:10 CDT",
+    "xLink": "",
+    "wallets": [
+      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1",
+      "FAicXNV5FVqtfbpn4Zccs71XcfGeyxBSGbqLDyDJZjke"
+    ]
+  }
+]
