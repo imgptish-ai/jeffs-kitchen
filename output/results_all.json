@@ -1,518 +1,532 @@
 [
   {
-    "name": "Bartholomew",
-    "symbol": "Bartholomew",
-    "contractAddress": "H6SPXLFGEBrC8wLjnN8BHJU62HCJmEpQzMcDUxWmpump",
-    "marketCap": 2182.49,
-    "peakMarketCap": 11483.19093386271,
-    "pairCreatedAt": "07/21/2026, 07:01:42 CDT",
-    "xLink": "",
+    "name": "buttmex",
+    "symbol": "buttmex",
+    "contractAddress": "DuwBfz4EJNunmTv9UYxZdb37KS952KWQHT7k8Sdmpump",
+    "marketCap": 2141.72,
+    "peakMarketCap": 16522.63160839333,
+    "pairCreatedAt": "07/23/2026, 06:29:54 CDT",
+    "xLink": "https://x.com/thealexmorgan15/status/2080254056207925346",
     "wallets": [
-      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1"
-    ]
-  },
-  {
-    "name": "Quiet On The Creek",
-    "symbol": "QUIET",
-    "contractAddress": "8yAYWCDqjt9rQxaZRR6EZ7ZH5Pm9vtqA79b4MYJE6p4d",
-    "marketCap": 2188.63,
-    "peakMarketCap": 11489.344189337191,
-    "pairCreatedAt": "07/21/2026, 07:00:12 CDT",
-    "xLink": "",
-    "wallets": [
-      "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd"
-    ]
-  },
-  {
-    "name": "Justice For Marius Dick",
-    "symbol": "Marius",
-    "contractAddress": "Ht79VkTsWYBPbHT3PNfiqSkcCPDymjYrt2ZY6Aq6pump",
-    "marketCap": 2176.89,
-    "peakMarketCap": 12173.594857767217,
-    "pairCreatedAt": "07/21/2026, 06:52:53 CDT",
-    "xLink": "",
-    "wallets": [
-      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd"
-    ]
-  },
-  {
-    "name": "Bitcoin on Solana",
-    "symbol": "BTC",
-    "contractAddress": "6cEgcWaAdskbwmtwpA8x9vdY3VYz9ATvdXxM53Ybpump",
-    "marketCap": 2191.17,
-    "peakMarketCap": 18549.01784376925,
-    "pairCreatedAt": "07/21/2026, 06:48:22 CDT",
-    "xLink": "",
-    "wallets": [
-      "71PCu3E4JP5RDBoY6wJteqzxkKNXLyE1byg5BTAL9UtQ",
-      "JDd3hy3gQn2V982mi1zqhNqUw1GfV2UL6g76STojCJPN"
-    ]
-  },
-  {
-    "name": "The Stochastic Parrot",
-    "symbol": "Parrot",
-    "contractAddress": "HEnb4GgiQHE7Cgjz2SVvSreAWo9Qj99uyh4kBtxjpump",
-    "marketCap": 2773.63,
-    "peakMarketCap": 17606.21091567611,
-    "pairCreatedAt": "07/21/2026, 06:47:59 CDT",
-    "xLink": "",
-    "wallets": [
-      "ardinRsN1mNYVeoJWTBsWeYeXvuR9UUDGMsCDKpb6AT",
-      "H31vEBxSJk1nQdUN11qZgZyhScyShhscKhvhZZU3dQoU"
-    ]
-  },
-  {
-    "name": "American AI",
-    "symbol": "AI",
-    "contractAddress": "J22ngg6GbUETdH384NmbELZERVnZALTnCx8sqX5Epump",
-    "marketCap": 2192.58,
-    "peakMarketCap": 10566.872363012453,
-    "pairCreatedAt": "07/21/2026, 06:47:08 CDT",
-    "xLink": "",
-    "wallets": [
-      "ardinRsN1mNYVeoJWTBsWeYeXvuR9UUDGMsCDKpb6AT"
-    ]
-  },
-  {
-    "name": "MeiMei",
-    "symbol": "妹妹",
-    "contractAddress": "2768R5iCze5b1Mq3vVRbwn8PisdNgBCTbfbjDN4Vpump",
-    "marketCap": 2549.45,
-    "peakMarketCap": 11897.386194448905,
-    "pairCreatedAt": "07/21/2026, 06:42:36 CDT",
-    "xLink": "",
-    "wallets": [
-      "71PCu3E4JP5RDBoY6wJteqzxkKNXLyE1byg5BTAL9UtQ",
-      "D4yrdUWHTf2wUWr7TZc3gZdMLsZ77y6RfHN4U28etf1j"
-    ]
-  },
-  {
-    "name": "The Debug Project",
-    "symbol": "Mosquito",
-    "contractAddress": "GZQ9m5PnHgZXysLmisNT62Msm9WesT14ZyQm9Rjbpump",
-    "marketCap": 2550.36,
-    "peakMarketCap": 12687.000040376985,
-    "pairCreatedAt": "07/21/2026, 06:36:11 CDT",
-    "xLink": "",
-    "wallets": [
-      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
-      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1"
-    ]
-  },
-  {
-    "name": "The Debug Project",
-    "symbol": "Mosquitoe ",
-    "contractAddress": "Gz33iKdr83mCErWbndVmEcXoVgBsy9D396qxvioUpump",
-    "marketCap": 2540.33,
-    "peakMarketCap": 10392.83397467118,
-    "pairCreatedAt": "07/21/2026, 06:36:01 CDT",
-    "xLink": "",
-    "wallets": [
-      "ardinRsN1mNYVeoJWTBsWeYeXvuR9UUDGMsCDKpb6AT",
-      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1",
-      "H31vEBxSJk1nQdUN11qZgZyhScyShhscKhvhZZU3dQoU"
-    ]
-  },
-  {
-    "name": "Pepper the Pomchi",
-    "symbol": "Pepper",
-    "contractAddress": "EnEfvTCVPh6DMVD3u5maBPVYNF2cJEnCSnSaBkwSpump",
-    "marketCap": 2209.65,
-    "peakMarketCap": 17331.98014313745,
-    "pairCreatedAt": "07/21/2026, 06:13:43 CDT",
-    "xLink": "",
-    "wallets": [
-      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd"
-    ]
-  },
-  {
-    "name": "dogintoolbox",
-    "symbol": "Pepper",
-    "contractAddress": "5LW5x26P7ewThUD3YP5XobWk9UGyJYm71izfcsuEpump",
-    "marketCap": 2190.31,
-    "peakMarketCap": 10036.209532479554,
-    "pairCreatedAt": "07/21/2026, 05:59:10 CDT",
-    "xLink": "",
-    "wallets": [
-      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd"
-    ]
-  },
-  {
-    "name": "The Underwear Thief",
-    "symbol": "THIEF",
-    "contractAddress": "FBzbsXAkTGG1HJBR4jEFJd7n1psm5eeqjhhEDMhNpump",
-    "marketCap": 2250.96,
-    "peakMarketCap": 14067.017771906072,
-    "pairCreatedAt": "07/21/2026, 05:54:41 CDT",
-    "xLink": "",
-    "wallets": [
-      "5B52w1ZW9tuwUduueP5J7HXz5AcGfruGoX6YoAudvyxG"
-    ]
-  },
-  {
-    "name": "Underwear Stealing Beaver",
-    "symbol": "USB",
-    "contractAddress": "HmTZvTVcCpxfkqYdaj22vm4ENdhzEqKtC8k9X1tvpump",
-    "marketCap": 2558.58,
-    "peakMarketCap": 24186.350007228997,
-    "pairCreatedAt": "07/21/2026, 05:52:27 CDT",
-    "xLink": "",
-    "wallets": [
-      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1"
-    ]
-  },
-  {
-    "name": "Computer #5",
-    "symbol": "5",
-    "contractAddress": "FW5YXmoTY9sWMqr5wQ1xGjoxvY6MyyMgNNcXSTbEpump",
-    "marketCap": 3146.9,
-    "peakMarketCap": 19925.14543528862,
-    "pairCreatedAt": "07/21/2026, 05:44:06 CDT",
-    "xLink": "https://x.com/i/communities/1917623187086459251",
-    "wallets": [
-      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd"
-    ]
-  },
-  {
-    "name": "Tung Tung Tung Yahu",
-    "symbol": "TripleY",
-    "contractAddress": "8kTWL8kUiCBmNfi2G4NmpeK3vLYm6oGRNhFsG98apump",
-    "marketCap": 4828.55,
-    "peakMarketCap": 15887.356113722588,
-    "pairCreatedAt": "07/21/2026, 05:27:31 CDT",
-    "xLink": "",
-    "wallets": [
-      "GJA1HEbxGnqBhBifH9uQauzXSB53to5rhDrzmKxhSU65",
-      "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa"
-    ]
-  },
-  {
-    "name": "Tien",
-    "symbol": "缇恩",
-    "contractAddress": "GwPzV4yV6dQQBsZNQ34hLXufGDfpPpP2zfgPXtCLpump",
-    "marketCap": 2446.23,
-    "peakMarketCap": 19488.30927485606,
-    "pairCreatedAt": "07/21/2026, 05:25:31 CDT",
-    "xLink": "",
-    "wallets": [
-      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
-      "gangJEP5geDHjPVRhDS5dTF5e6GtRvtNogMEEVs91RV"
-    ]
-  },
-  {
-    "name": "doomscroll cat",
-    "symbol": "scrollcat",
-    "contractAddress": "9YgQAGcRkxRJzd2ig3xTgawoh2uv4yxpg5r3o5yhpump",
-    "marketCap": 2573.49,
-    "peakMarketCap": 21727.67237842639,
-    "pairCreatedAt": "07/21/2026, 05:23:42 CDT",
-    "xLink": "",
-    "wallets": [
-      "5B52w1ZW9tuwUduueP5J7HXz5AcGfruGoX6YoAudvyxG",
-      "96hq1rUo5qQk26NAP7wK6VtcnZXPKbkHpdVsdGwe3Cda"
-    ]
-  },
-  {
-    "name": "モザイヌ2",
-    "symbol": "モザイヌ2",
-    "contractAddress": "7wDGfHs4pmnq5xpsgJ6XvVrZENTcU7G9VzGjQ18Qpump",
-    "marketCap": 2388.36,
-    "peakMarketCap": 12192.683010764551,
-    "pairCreatedAt": "07/21/2026, 05:23:24 CDT",
-    "xLink": "",
-    "wallets": [
-      "3kebnKw7cPdSkLRfiMEALyZJGZ4wdiSRvmoN4rD1yPzV",
-      "GJA1HEbxGnqBhBifH9uQauzXSB53to5rhDrzmKxhSU65",
-      "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd"
-    ]
-  },
-  {
-    "name": "Vote For Arnie",
-    "symbol": "ARNIE",
-    "contractAddress": "CaCurDySrbXRvrf14gqR53EbnTwscM51rnvmbrgDpump",
-    "marketCap": 2183.89,
-    "peakMarketCap": 13027.05328951632,
-    "pairCreatedAt": "07/21/2026, 04:54:06 CDT",
-    "xLink": "",
-    "wallets": [
-      "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd"
-    ]
-  },
-  {
-    "name": "Muskonomy ETF",
-    "symbol": "Muskonomy",
-    "contractAddress": "BTm8TzpxqEWY1ozuX26Z6Z9v7LNjFeX4Z7Y4n9Wqpump",
-    "marketCap": 2407.24,
-    "peakMarketCap": 20455.76299533419,
-    "pairCreatedAt": "07/21/2026, 04:51:27 CDT",
-    "xLink": "",
-    "wallets": [
-      "PMJA8UQDyWTFw2Smhyp9jGA6aTaP7jKHR7BPudrgyYN",
-      "F5XvCe4233m6mHRbkkq2ZsFvqrPAnRrDBExeQy2fwagQ"
-    ]
-  },
-  {
-    "name": "Stank Memes",
-    "symbol": "STANK",
-    "contractAddress": "CXa9jtiJHYmcQardeoKbdfTvQ1SYB3SPuK41WnHqpump",
-    "marketCap": 2678.28,
-    "peakMarketCap": 21982.871699266805,
-    "pairCreatedAt": "07/21/2026, 04:46:17 CDT",
-    "xLink": "",
-    "wallets": [
-      "GJA1HEbxGnqBhBifH9uQauzXSB53to5rhDrzmKxhSU65",
-      "5B52w1ZW9tuwUduueP5J7HXz5AcGfruGoX6YoAudvyxG",
-      "BHREKFkPQgAtDs8Vb1UfLkUpjG6ScidTjHaCWFuG2AtX"
-    ]
-  },
-  {
-    "name": "The cage is all I know",
-    "symbol": "Ina",
-    "contractAddress": "Fzk4r96jUWLffm2R4bhLdu1Kb47LjVcYY5rYXpfKpump",
-    "marketCap": 2251.23,
-    "peakMarketCap": 17369.904222241454,
-    "pairCreatedAt": "07/21/2026, 04:29:53 CDT",
-    "xLink": "",
-    "wallets": [
-      "GJA1HEbxGnqBhBifH9uQauzXSB53to5rhDrzmKxhSU65",
-      "71PCu3E4JP5RDBoY6wJteqzxkKNXLyE1byg5BTAL9UtQ",
       "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd",
-      "Hw5UKBU5k3YudnGwaykj5E8cYUidNMPuEewRRar5Xoc7"
-    ]
-  },
-  {
-    "name": "Troon",
-    "symbol": "Troon",
-    "contractAddress": "HpAXgKZBkxEVCW6hZkrtyjj9m7knPhcYjio7R2n6pump",
-    "marketCap": 2248.69,
-    "peakMarketCap": 15583.053785087486,
-    "pairCreatedAt": "07/21/2026, 04:17:37 CDT",
-    "xLink": "https://x.com/humanevolvd/status/2079495861311033378?s=46",
-    "wallets": [
-      "5ZuV8eqkvzYFVEKbLvGBdexL2tFv7E5BCd2HZpjqbdg"
-    ]
-  },
-  {
-    "name": "Cat on Melon",
-    "symbol": "COM",
-    "contractAddress": "33XHvWm5kpeWJFnwkYHbafhx6zcgcDN7RcdZRKmbpump",
-    "marketCap": 2215.36,
-    "peakMarketCap": 13645.966137105102,
-    "pairCreatedAt": "07/21/2026, 04:12:24 CDT",
-    "xLink": "",
-    "wallets": [
-      "CgaA9a1JwAXJyfHuvZ7VW8YfTVRkdiT5mjBBSKcg7Rz5",
-      "96hq1rUo5qQk26NAP7wK6VtcnZXPKbkHpdVsdGwe3Cda"
-    ]
-  },
-  {
-    "name": "Dogecoin Dark",
-    "symbol": "DOGED",
-    "contractAddress": "DUVsG2QGamijpu9DKs6nXJuPTsgqcgsPYXPF3mzypump",
-    "marketCap": 2242.51,
-    "peakMarketCap": 21510.067313633823,
-    "pairCreatedAt": "07/21/2026, 04:10:26 CDT",
-    "xLink": "",
-    "wallets": [
-      "BtMBMPkoNbnLF9Xn552guQq528KKXcsNBNNBre3oaQtr",
-      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd"
-    ]
-  },
-  {
-    "name": "Scroll To Win",
-    "symbol": "S2W",
-    "contractAddress": "YixPLN3a7i1XLsFh1XDtfzY8oPGzEounvUpzPGWpump",
-    "marketCap": 2178.78,
-    "peakMarketCap": 12192.671204108305,
-    "pairCreatedAt": "07/21/2026, 03:58:44 CDT",
-    "xLink": "https://x.com/Tuffdevonchain/status/2079494221354893633",
-    "wallets": [
-      "922VvmmYDHV9KMTJJ71Y5Yd3Vn7cfJuFasLNSsZPygrG"
-    ]
-  },
-  {
-    "name": "Sharik",
-    "symbol": "Шарик",
-    "contractAddress": "CwUtg9wBDnnYh26L931vcozwvJdTuFH14cE5BmbeVJxd",
-    "marketCap": 2196.01,
-    "peakMarketCap": 13445.668851764758,
-    "pairCreatedAt": "07/21/2026, 03:55:27 CDT",
-    "xLink": "",
-    "wallets": [
-      "PMJA8UQDyWTFw2Smhyp9jGA6aTaP7jKHR7BPudrgyYN",
-      "922VvmmYDHV9KMTJJ71Y5Yd3Vn7cfJuFasLNSsZPygrG"
-    ]
-  },
-  {
-    "name": "Trans Wojak",
-    "symbol": "Transjak",
-    "contractAddress": "5oJwi2auD4PHatbveheS2FeL37B1b3DqKFM7SkFypump",
-    "marketCap": 6938.17,
-    "peakMarketCap": 22301.66008002067,
-    "pairCreatedAt": "07/21/2026, 03:54:34 CDT",
-    "xLink": "",
-    "wallets": [
-      "GJA1HEbxGnqBhBifH9uQauzXSB53to5rhDrzmKxhSU65",
-      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
-      "6EDaVsS6enYgJ81tmhEkiKFcb4HuzPUVFZeom6PHUqN3"
-    ]
-  },
-  {
-    "name": "regards",
-    "symbol": "regards",
-    "contractAddress": "5QrumhGVT8hE5PQtxqfDGazuLjfn4S6UDGbNpupbpump",
-    "marketCap": 2177.95,
-    "peakMarketCap": 15226.824052207812,
-    "pairCreatedAt": "07/21/2026, 03:02:32 CDT",
-    "xLink": "",
-    "wallets": [
-      "Hw5UKBU5k3YudnGwaykj5E8cYUidNMPuEewRRar5Xoc7"
-    ]
-  },
-  {
-    "name": "Chudcel Groyper",
-    "symbol": "CHUDCEL",
-    "contractAddress": "EWWoZJ4ANGubSk7GwfCs3W5cPA5KtwMLoBUUYPtSpump",
-    "marketCap": 2183.4,
-    "peakMarketCap": 18035.916986126027,
-    "pairCreatedAt": "07/21/2026, 02:58:21 CDT",
-    "xLink": "",
-    "wallets": [
-      "PMJA8UQDyWTFw2Smhyp9jGA6aTaP7jKHR7BPudrgyYN",
-      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
-      "922VvmmYDHV9KMTJJ71Y5Yd3Vn7cfJuFasLNSsZPygrG",
-      "D9gQ6RhKEpnobPBUdWY5bPQt2p3zGk3iVz6ChpUi2ArA",
-      "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd",
-      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1",
-      "5ZuV8eqkvzYFVEKbLvGBdexL2tFv7E5BCd2HZpjqbdg"
-    ]
-  },
-  {
-    "name": "We are going to steal the moon",
-    "symbol": "SAM",
-    "contractAddress": "ArzFoiT6n2xLwvZrGUL6rkDDGhA8xU5LTYLx8Nrbpump",
-    "marketCap": 2546.63,
-    "peakMarketCap": 12956.615018839004,
-    "pairCreatedAt": "07/21/2026, 02:53:21 CDT",
-    "xLink": "",
-    "wallets": [
-      "922VvmmYDHV9KMTJJ71Y5Yd3Vn7cfJuFasLNSsZPygrG"
-    ]
-  },
-  {
-    "name": "Axel the Dog",
-    "symbol": "Axel",
-    "contractAddress": "69DNxGC9KeVEihCFnTWxveYnyfBazc55jtzQwKp5pump",
-    "marketCap": 2189.42,
-    "peakMarketCap": 14127.693515474353,
-    "pairCreatedAt": "07/21/2026, 02:37:04 CDT",
-    "xLink": "",
-    "wallets": [
-      "922VvmmYDHV9KMTJJ71Y5Yd3Vn7cfJuFasLNSsZPygrG",
-      "Hw5UKBU5k3YudnGwaykj5E8cYUidNMPuEewRRar5Xoc7"
-    ]
-  },
-  {
-    "name": "a piece of poop",
-    "symbol": "POOP",
-    "contractAddress": "Gv5Mwc5V8TGVLHzjq2VGjCRHYzGW5j8Xv6PV6ywbpump",
-    "marketCap": 2847.48,
-    "peakMarketCap": 18837.4970121197,
-    "pairCreatedAt": "07/21/2026, 02:27:19 CDT",
-    "xLink": "https://x.com/CATonRH/status/2079468249377358125",
-    "wallets": [
-      "4sAUSQFdvWRBxR8UoLBYbw8CcXuwXWxnN8pXa4mtm5nU",
-      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
-      "71PCu3E4JP5RDBoY6wJteqzxkKNXLyE1byg5BTAL9UtQ",
-      "H31vEBxSJk1nQdUN11qZgZyhScyShhscKhvhZZU3dQoU",
+      "gangJEP5geDHjPVRhDS5dTF5e6GtRvtNogMEEVs91RV",
+      "97K6nsFhBWDKwQf6heDDhDtsCRC4779LPHSFZkc2zqK4",
       "FAicXNV5FVqtfbpn4Zccs71XcfGeyxBSGbqLDyDJZjke"
     ]
   },
   {
-    "name": "Blue Pepe",
-    "symbol": "BPEPE",
-    "contractAddress": "H2vJJxuyU88JewY6GaZe1AZVFU7APdsmwusX2PxQpump",
-    "marketCap": 2189.07,
-    "peakMarketCap": 18477.99623256664,
-    "pairCreatedAt": "07/21/2026, 02:18:47 CDT",
+    "name": "CoonSack",
+    "symbol": "CoonSack",
+    "contractAddress": "4cu6p1E7DsKU589pZjYU3e6UUnZhbNhrKHkJWXebpump",
+    "marketCap": 2135.45,
+    "peakMarketCap": 22953.069463015578,
+    "pairCreatedAt": "07/23/2026, 06:22:39 CDT",
+    "xLink": "",
+    "wallets": [
+      "F5XvCe4233m6mHRbkkq2ZsFvqrPAnRrDBExeQy2fwagQ",
+      "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd"
+    ]
+  },
+  {
+    "name": "baby-bryan",
+    "symbol": "bryan",
+    "contractAddress": "Aqq8Bbzr1gNtUzGjxpymrJCJzpRaxP2wxkSbXJ8fpump",
+    "marketCap": 2989.05,
+    "peakMarketCap": 24019.051665342835,
+    "pairCreatedAt": "07/23/2026, 06:00:15 CDT",
+    "xLink": "",
+    "wallets": [
+      "FRbUNvGxYNC1eFngpn7AD3f14aKKTJVC6zSMtvj2dyCS",
+      "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd",
+      "D4yrdUWHTf2wUWr7TZc3gZdMLsZ77y6RfHN4U28etf1j"
+    ]
+  },
+  {
+    "name": "i can fix her",
+    "symbol": "FIX",
+    "contractAddress": "6Wa3RwnxhNFw3mRfrf7KF7BPFExL68knZE3DNnWgzboh",
+    "marketCap": 2140.36,
+    "peakMarketCap": 10979.530775384905,
+    "pairCreatedAt": "07/23/2026, 05:55:40 CDT",
+    "xLink": "https://x.com/PayoutOnYT/status/2080246888205320246",
+    "wallets": [
+      "922VvmmYDHV9KMTJJ71Y5Yd3Vn7cfJuFasLNSsZPygrG"
+    ]
+  },
+  {
+    "name": "Goon Samaritan",
+    "symbol": "SAMARITAN",
+    "contractAddress": "7a1nshPvpNhyeCbDMwR1aRniB2fc6886ntXPGEqNpump",
+    "marketCap": 3115.35,
+    "peakMarketCap": 22250.95625206687,
+    "pairCreatedAt": "07/23/2026, 05:54:52 CDT",
+    "xLink": "",
+    "wallets": [
+      "PMJA8UQDyWTFw2Smhyp9jGA6aTaP7jKHR7BPudrgyYN",
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
+      "922VvmmYDHV9KMTJJ71Y5Yd3Vn7cfJuFasLNSsZPygrG",
+      "71PCu3E4JP5RDBoY6wJteqzxkKNXLyE1byg5BTAL9UtQ",
+      "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd",
+      "HAsiTax6zLw474cc38kgGNAs8uYAyGXEngQVrom8TrxF"
+    ]
+  },
+  {
+    "name": "True Babushka",
+    "symbol": "BABUSHKA",
+    "contractAddress": "Eec79it46krg4n6vdww4wn4tq1voArfx4K6nckxCpump",
+    "marketCap": 2123.71,
+    "peakMarketCap": 10041.07978748269,
+    "pairCreatedAt": "07/23/2026, 05:50:03 CDT",
+    "xLink": "",
+    "wallets": [
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
+      "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd"
+    ]
+  },
+  {
+    "name": "Silly Dragon",
+    "symbol": "SILLY",
+    "contractAddress": "Gxj5YSDvJkbuzXWRP6TJK3v6pRqTwFNbF73JQ3dPpump",
+    "marketCap": 2343.34,
+    "peakMarketCap": 24776.085997389466,
+    "pairCreatedAt": "07/23/2026, 05:36:55 CDT",
+    "xLink": "https://x.com/i/communities/1937386693151150530",
+    "wallets": [
+      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1",
+      "D4yrdUWHTf2wUWr7TZc3gZdMLsZ77y6RfHN4U28etf1j"
+    ]
+  },
+  {
+    "name": "DogWifBackpack",
+    "symbol": "BACKPACK",
+    "contractAddress": "F4tNDCnCANg16s2tZToXQSVP5hk1EnFJXauXno1opump",
+    "marketCap": 2158.31,
+    "peakMarketCap": 13335.94925693396,
+    "pairCreatedAt": "07/23/2026, 05:36:28 CDT",
+    "xLink": "",
+    "wallets": [
+      "CgaA9a1JwAXJyfHuvZ7VW8YfTVRkdiT5mjBBSKcg7Rz5",
+      "71PCu3E4JP5RDBoY6wJteqzxkKNXLyE1byg5BTAL9UtQ",
+      "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd"
+    ]
+  },
+  {
+    "name": "Three-Headed Dragon",
+    "symbol": "THD",
+    "contractAddress": "H9EZMLnseSJoKDkkSb9aGd3y19SVqpFmFSHDwdmJpump",
+    "marketCap": 3137.38,
+    "peakMarketCap": 19043.904909204713,
+    "pairCreatedAt": "07/23/2026, 05:31:12 CDT",
+    "xLink": "",
+    "wallets": [
+      "FRbUNvGxYNC1eFngpn7AD3f14aKKTJVC6zSMtvj2dyCS",
+      "99xnE2zEFi8YhmKDaikc1EvH6ELTQJppnqUwMzmpLXrs",
+      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1"
+    ]
+  },
+  {
+    "name": "dihbihahhcoin",
+    "symbol": "dihbihahh",
+    "contractAddress": "9rtwqybnEiCG3EDiHEEHjPF4XBuRvSLmWfAQhDg6pump",
+    "marketCap": 2475.34,
+    "peakMarketCap": 14941.954601187697,
+    "pairCreatedAt": "07/23/2026, 05:27:29 CDT",
+    "xLink": "https://x.com/i/communities/2031788510147932594",
+    "wallets": [
+      "F5XvCe4233m6mHRbkkq2ZsFvqrPAnRrDBExeQy2fwagQ",
+      "CgaA9a1JwAXJyfHuvZ7VW8YfTVRkdiT5mjBBSKcg7Rz5",
+      "BCagckXeMChUKrHEd6fKFA1uiWDtcmCXMsqaheLiUPJd",
+      "96hq1rUo5qQk26NAP7wK6VtcnZXPKbkHpdVsdGwe3Cda"
+    ]
+  },
+  {
+    "name": "Wendi Mallo",
+    "symbol": "Wendi",
+    "contractAddress": "5HrZHivupbYRdxCoqguRDQ4E1x87b6eW83M5X5supump",
+    "marketCap": 3492.73,
+    "peakMarketCap": 23268.003630076328,
+    "pairCreatedAt": "07/23/2026, 05:12:26 CDT",
+    "xLink": "https://x.com/UmarellOnSOL/status/2080233856741920793?s=20",
+    "wallets": [
+      "FRbUNvGxYNC1eFngpn7AD3f14aKKTJVC6zSMtvj2dyCS"
+    ]
+  },
+  {
+    "name": "soup",
+    "symbol": "soup",
+    "contractAddress": "EvFJvCd13XgMgj5UCxm6iifftvjjzc9V5hHfPcAdpump",
+    "marketCap": 2394.43,
+    "peakMarketCap": 20779.701245881668,
+    "pairCreatedAt": "07/23/2026, 05:01:24 CDT",
+    "xLink": "",
+    "wallets": [
+      "GJA1HEbxGnqBhBifH9uQauzXSB53to5rhDrzmKxhSU65",
+      "96hq1rUo5qQk26NAP7wK6VtcnZXPKbkHpdVsdGwe3Cda"
+    ]
+  },
+  {
+    "name": "Emily",
+    "symbol": "Emily",
+    "contractAddress": "FmQFYo9nSfyXGYgrZckdA8nhTtHiGTwzoTLkStXQpump",
+    "marketCap": 2125.08,
+    "peakMarketCap": 11726.14424413784,
+    "pairCreatedAt": "07/23/2026, 04:48:30 CDT",
     "xLink": "",
     "wallets": [
       "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd"
     ]
   },
   {
-    "name": "PVE",
-    "symbol": "PVE",
-    "contractAddress": "7nRBZUjG6SVfn3gByEuPYjo5PVKUAuZMThrnbG5fpump",
-    "marketCap": 2737.63,
-    "peakMarketCap": 12715.48117838036,
-    "pairCreatedAt": "07/21/2026, 01:57:10 CDT",
+    "name": "Justice for Wang Wang",
+    "symbol": "旺旺",
+    "contractAddress": "5GGYF4yMAHg9iZBMTjz4kvZt4ZYzq192P8Z1PkFdpump",
+    "marketCap": 2172.5,
+    "peakMarketCap": 17958.104722567605,
+    "pairCreatedAt": "07/23/2026, 04:39:34 CDT",
     "xLink": "",
     "wallets": [
-      "5B52w1ZW9tuwUduueP5J7HXz5AcGfruGoX6YoAudvyxG"
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd"
     ]
   },
   {
-    "name": "dank nut",
-    "symbol": "DNUT",
-    "contractAddress": "F485ZMgCAmhgMTqnnwhd5FgQwJu5uTA8qUGgfWrKpump",
-    "marketCap": 2209.84,
-    "peakMarketCap": 19672.206241376425,
-    "pairCreatedAt": "07/21/2026, 01:41:56 CDT",
+    "name": "Devin",
+    "symbol": "Devin",
+    "contractAddress": "6f4VuBcz63snyP6E4SRt1WjvQE1FGvzY7DkeCJRtpump",
+    "marketCap": 2181.06,
+    "peakMarketCap": 17223.155694817946,
+    "pairCreatedAt": "07/23/2026, 04:27:52 CDT",
     "xLink": "",
     "wallets": [
-      "EaVboaPxFCYanjoNWdkxTbPvt57nhXGu5i6m9m6ZS2kK"
+      "CgaA9a1JwAXJyfHuvZ7VW8YfTVRkdiT5mjBBSKcg7Rz5"
     ]
   },
   {
-    "name": "outsider in a world of insiders",
-    "symbol": "outsider",
-    "contractAddress": "AAtf5fpVocREmC1voVyUdm4SnnHNixKWEQdnUKJEpump",
-    "marketCap": 2176.51,
-    "peakMarketCap": 12237.755423849683,
-    "pairCreatedAt": "07/21/2026, 01:38:04 CDT",
+    "name": "Bear In Cone",
+    "symbol": "Momota",
+    "contractAddress": "A2VnVSpGyGBxaHf2U5mRc95d66JvrYgBRzHhsAdppump",
+    "marketCap": 2160.58,
+    "peakMarketCap": 15136.423882783922,
+    "pairCreatedAt": "07/23/2026, 04:16:32 CDT",
     "xLink": "",
     "wallets": [
-      "EaVboaPxFCYanjoNWdkxTbPvt57nhXGu5i6m9m6ZS2kK"
+      "DZAa55HwXgv5hStwaTEJGXZz1DhHejvpb7Yr762urXam"
     ]
   },
   {
-    "name": "kiri",
-    "symbol": "KIRI",
-    "contractAddress": "B6KHASKVwoepvmGd6PGGx8PWtcUQB7E7Wtbc47DTpump",
-    "marketCap": 2204.46,
-    "peakMarketCap": 12928.851244608944,
-    "pairCreatedAt": "07/21/2026, 01:11:55 CDT",
+    "name": "The Shortest Dog",
+    "symbol": "Pearl",
+    "contractAddress": "7fzV8RG3ZHPErJ1LWhi4Yaa6NqhLiXnZW2hB4d5cpump",
+    "marketCap": 4452.71,
+    "peakMarketCap": 14184.981481312969,
+    "pairCreatedAt": "07/23/2026, 04:06:48 CDT",
     "xLink": "",
     "wallets": [
-      "EaVboaPxFCYanjoNWdkxTbPvt57nhXGu5i6m9m6ZS2kK",
-      "922VvmmYDHV9KMTJJ71Y5Yd3Vn7cfJuFasLNSsZPygrG",
-      "5ZuV8eqkvzYFVEKbLvGBdexL2tFv7E5BCd2HZpjqbdg"
+      "FRbUNvGxYNC1eFngpn7AD3f14aKKTJVC6zSMtvj2dyCS",
+      "CgaA9a1JwAXJyfHuvZ7VW8YfTVRkdiT5mjBBSKcg7Rz5"
     ]
   },
   {
-    "name": "42069",
-    "symbol": "42069",
-    "contractAddress": "AGBYngch8G51GjmLAHvc3CXCVhnricnFuvbhaRgDGd7q",
-    "marketCap": 2216.35,
-    "peakMarketCap": 14003.458827158449,
-    "pairCreatedAt": "07/21/2026, 01:11:54 CDT",
+    "name": "Goon Samaritan",
+    "symbol": "SAMARITAN",
+    "contractAddress": "6vFm72aS95RtAyWeczq3mEFYhs4WQ1Bpm3XjrXtZpump",
+    "marketCap": 4141.44,
+    "peakMarketCap": 10424.373029240367,
+    "pairCreatedAt": "07/23/2026, 04:06:07 CDT",
     "xLink": "",
     "wallets": [
-      "EaVboaPxFCYanjoNWdkxTbPvt57nhXGu5i6m9m6ZS2kK"
+      "CgaA9a1JwAXJyfHuvZ7VW8YfTVRkdiT5mjBBSKcg7Rz5"
     ]
   },
   {
-    "name": "workhorse",
-    "symbol": "workhorse",
-    "contractAddress": "A4QiRrj8fnzWMkq5jHhan83YybtuECz5DEdTUR4spump",
-    "marketCap": 2216.23,
-    "peakMarketCap": 14566.785480556711,
-    "pairCreatedAt": "07/21/2026, 01:09:21 CDT",
+    "name": "Save The Polar Bears",
+    "symbol": "Bears",
+    "contractAddress": "8Kc85xadUFDzqmpSHpCsdcMm6jXaCEFRYtn8SPQHpump",
+    "marketCap": 2134.47,
+    "peakMarketCap": 10867.395690546158,
+    "pairCreatedAt": "07/23/2026, 04:05:01 CDT",
     "xLink": "",
     "wallets": [
-      "922VvmmYDHV9KMTJJ71Y5Yd3Vn7cfJuFasLNSsZPygrG",
-      "5ZuV8eqkvzYFVEKbLvGBdexL2tFv7E5BCd2HZpjqbdg"
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
+      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1"
+    ]
+  },
+  {
+    "name": "cat",
+    "symbol": "cat",
+    "contractAddress": "HqqhX8wYavZUNUbBWPvdSgFfLNpPZ2qA6YPm4s2dpump",
+    "marketCap": 3191.25,
+    "peakMarketCap": 19641.523847249697,
+    "pairCreatedAt": "07/23/2026, 03:56:05 CDT",
+    "xLink": "",
+    "wallets": [
+      "GJA1HEbxGnqBhBifH9uQauzXSB53to5rhDrzmKxhSU65"
+    ]
+  },
+  {
+    "name": "Man In Sign",
+    "symbol": "MIS",
+    "contractAddress": "E2pJAK1Yh3pdbhWTE5DdGGzR5yFYeRx5SGFWGw6Vpump",
+    "marketCap": 2417.65,
+    "peakMarketCap": 14240.574510847213,
+    "pairCreatedAt": "07/23/2026, 03:48:07 CDT",
+    "xLink": "",
+    "wallets": [
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd"
+    ]
+  },
+  {
+    "name": "Get These Beggars Out Of Here",
+    "symbol": "Beggars",
+    "contractAddress": "7nXsJjdg7Ab3NLy6AyygBAXRGeKa1u5jbmcaGsKepump",
+    "marketCap": 2162.12,
+    "peakMarketCap": 10472.495298560976,
+    "pairCreatedAt": "07/23/2026, 03:43:14 CDT",
+    "xLink": "",
+    "wallets": [
+      "Hw5UKBU5k3YudnGwaykj5E8cYUidNMPuEewRRar5Xoc7",
+      "HAsiTax6zLw474cc38kgGNAs8uYAyGXEngQVrom8TrxF"
+    ]
+  },
+  {
+    "name": "Pony In Car",
+    "symbol": "PIC",
+    "contractAddress": "DhYKbnBNcLmFj2ukmLnmGHasmoHk3YcDYxSNGM5rpump",
+    "marketCap": 2814.98,
+    "peakMarketCap": 20029.086260600452,
+    "pairCreatedAt": "07/23/2026, 03:35:39 CDT",
+    "xLink": "",
+    "wallets": [
+      "FM1YCKED2KaqB8Uat8aB1nsffR1vezr7s6FAEieXJgke",
+      "HAsiTax6zLw474cc38kgGNAs8uYAyGXEngQVrom8TrxF"
+    ]
+  },
+  {
+    "name": "Pony In Car",
+    "symbol": "PIN",
+    "contractAddress": "5e82Dvy41xZRtM2YbbdjEYxaGZfSomVB4yr15Kkapump",
+    "marketCap": 2171.26,
+    "peakMarketCap": 14900.700411707938,
+    "pairCreatedAt": "07/23/2026, 03:35:22 CDT",
+    "xLink": "",
+    "wallets": [
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd"
+    ]
+  },
+  {
+    "name": "The Nietzschean Dunny Dinghy",
+    "symbol": "DunnyDinghy",
+    "contractAddress": "7gR2VtqJYLh7UgLz3g792ZS6k8HbrPM9fJzbFGPjpump",
+    "marketCap": 4562.07,
+    "peakMarketCap": 13379.041427857608,
+    "pairCreatedAt": "07/23/2026, 03:35:10 CDT",
+    "xLink": "",
+    "wallets": [
+      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1"
+    ]
+  },
+  {
+    "name": "The Unc Bull",
+    "symbol": "DAVE",
+    "contractAddress": "8gHYPyfUjJskvNKebssxPruptU5ULbdifHpFHFLapump",
+    "marketCap": 2150.47,
+    "peakMarketCap": 22968.986725210983,
+    "pairCreatedAt": "07/23/2026, 02:47:12 CDT",
+    "xLink": "",
+    "wallets": [
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd"
+    ]
+  },
+  {
+    "name": "The Nietzschean Grandpa",
+    "symbol": "DALE",
+    "contractAddress": "DhozJXmZzoapaQFNcCdyCTrm6HVo43J73dgvKq5Cpump",
+    "marketCap": 2160.42,
+    "peakMarketCap": 19180.37253232755,
+    "pairCreatedAt": "07/23/2026, 02:39:48 CDT",
+    "xLink": "",
+    "wallets": [
+      "FRbUNvGxYNC1eFngpn7AD3f14aKKTJVC6zSMtvj2dyCS",
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
+      "HZXdwRRw27kfpYtTqc7bMfrRgK3LSUaiKDFtqoEihik8"
+    ]
+  },
+  {
+    "name": "cumgeon",
+    "symbol": "cumgeon",
+    "contractAddress": "CPeZ14QfQ6ZTBwMWP8XYUiPUSKFdzpnNMKgjoMV1pump",
+    "marketCap": 2146.28,
+    "peakMarketCap": 12097.325030616288,
+    "pairCreatedAt": "07/23/2026, 02:26:36 CDT",
+    "xLink": "https://x.com/Sizeyon/status/2080191105040023729",
+    "wallets": [
+      "CAPn1yH4oSywsxGU456jfgTrSSUidf9jgeAnHceNUJdw",
+      "Hw5UKBU5k3YudnGwaykj5E8cYUidNMPuEewRRar5Xoc7"
+    ]
+  },
+  {
+    "name": "Money Monkeys",
+    "symbol": "Cynomolgus",
+    "contractAddress": "ChXsi7EcbHjrN6Ze9nAYpxbtTyWdzfbv1TwfbpXTpump",
+    "marketCap": 2175.23,
+    "peakMarketCap": 12783.872975564967,
+    "pairCreatedAt": "07/23/2026, 02:18:58 CDT",
+    "xLink": "",
+    "wallets": [
+      "FRbUNvGxYNC1eFngpn7AD3f14aKKTJVC6zSMtvj2dyCS",
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
+      "Hw5UKBU5k3YudnGwaykj5E8cYUidNMPuEewRRar5Xoc7"
+    ]
+  },
+  {
+    "name": "Stable Coin",
+    "symbol": "STABLE",
+    "contractAddress": "BF5fuypuEjVubhqeR6pZLe3mqKpzKD5ozXLq8JAKpump",
+    "marketCap": 5262.99,
+    "peakMarketCap": 23316.66125894628,
+    "pairCreatedAt": "07/23/2026, 02:10:20 CDT",
+    "xLink": "https://x.com/i/communities/2035963972436774953",
+    "wallets": [
+      "3kebnKw7cPdSkLRfiMEALyZJGZ4wdiSRvmoN4rD1yPzV"
+    ]
+  },
+  {
+    "name": "Little Kit",
+    "symbol": "KIT",
+    "contractAddress": "PpKCF84gAWrC5Tjpw3hWg8Mdx67LhbaZW1zWLsEpump",
+    "marketCap": 2493.09,
+    "peakMarketCap": 10189.396833377054,
+    "pairCreatedAt": "07/23/2026, 02:05:08 CDT",
+    "xLink": "",
+    "wallets": [
+      "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1"
+    ]
+  },
+  {
+    "name": "The Fence",
+    "symbol": "FENCE",
+    "contractAddress": "FSsBcNp97Bc5vScJAgkyx6uHdEWnLi45S9LXD2VYpump",
+    "marketCap": 2411.09,
+    "peakMarketCap": 12416.740400278542,
+    "pairCreatedAt": "07/23/2026, 01:54:39 CDT",
+    "xLink": "",
+    "wallets": [
+      "CgaA9a1JwAXJyfHuvZ7VW8YfTVRkdiT5mjBBSKcg7Rz5",
+      "CAPn1yH4oSywsxGU456jfgTrSSUidf9jgeAnHceNUJdw"
+    ]
+  },
+  {
+    "name": "CatFish",
+    "symbol": "CatFish",
+    "contractAddress": "BXQgn3cRU2FvW5ENekd8hGHRo34diW3aPBAuyyRWpump",
+    "marketCap": 2153.31,
+    "peakMarketCap": 10740.495965253847,
+    "pairCreatedAt": "07/23/2026, 01:37:12 CDT",
+    "xLink": "",
+    "wallets": [
+      "BTf4A2exGK9BCVDNzy65b9dUzXgMqB4weVkvTMFQsadd",
+      "71PCu3E4JP5RDBoY6wJteqzxkKNXLyE1byg5BTAL9UtQ"
+    ]
+  },
+  {
+    "name": "/Share/",
+    "symbol": "/Share/",
+    "contractAddress": "HhqN1D1G1bLww9zUhxUttsmfBSvgkutAXp7mtAXCpump",
+    "marketCap": 2114.68,
+    "peakMarketCap": 11227.436173731398,
+    "pairCreatedAt": "07/23/2026, 01:21:23 CDT",
+    "xLink": "",
+    "wallets": [
+      "Bi4rd5FH5bYEN8scZ7wevxNZyNmKHdaBcvewdPFxYdLt",
+      "29yFzeBZgxf5zqrAkKXwgZtQehRf4pL8WbV2nRJikbw8"
+    ]
+  },
+  {
+    "name": "/Share",
+    "symbol": "/Share",
+    "contractAddress": "EDjhpJgbfnmeTn7NoVpwp8JkADT9dYQQZkacyvqCpump",
+    "marketCap": 2213.38,
+    "peakMarketCap": 16632.795642753903,
+    "pairCreatedAt": "07/23/2026, 01:13:36 CDT",
+    "xLink": "https://x.com/CrumbleSleep/status/2080174397865046279",
+    "wallets": [
+      "Bi4rd5FH5bYEN8scZ7wevxNZyNmKHdaBcvewdPFxYdLt"
+    ]
+  },
+  {
+    "name": "Memedog",
+    "symbol": "Memedog",
+    "contractAddress": "EyF8Yxiiy3z328auZoTFkt8F2uNeE74kvGugjsuFpump",
+    "marketCap": 2170.55,
+    "peakMarketCap": 13677.24315323228,
+    "pairCreatedAt": "07/23/2026, 01:05:52 CDT",
+    "xLink": "",
+    "wallets": [
+      "Bi4rd5FH5bYEN8scZ7wevxNZyNmKHdaBcvewdPFxYdLt"
+    ]
+  },
+  {
+    "name": "The Animal Hoarder",
+    "symbol": "Gail",
+    "contractAddress": "3XxC9Q34DXL5dLeitCCY8MRnyC4rtupCoB7jeCbbpump",
+    "marketCap": 2307.9,
+    "peakMarketCap": 11495.402591913456,
+    "pairCreatedAt": "07/23/2026, 00:59:45 CDT",
+    "xLink": "",
+    "wallets": [
+      "CAPn1yH4oSywsxGU456jfgTrSSUidf9jgeAnHceNUJdw"
+    ]
+  },
+  {
+    "name": "fefer",
+    "symbol": "fefer",
+    "contractAddress": "85UqQMJjcFzohGuNEsR5em28Xeh1eZ5PzG42BdtApump",
+    "marketCap": 2166.26,
+    "peakMarketCap": 10629.278504587837,
+    "pairCreatedAt": "07/23/2026, 00:53:15 CDT",
+    "xLink": "",
+    "wallets": [
+      "Bi4rd5FH5bYEN8scZ7wevxNZyNmKHdaBcvewdPFxYdLt",
+      "29yFzeBZgxf5zqrAkKXwgZtQehRf4pL8WbV2nRJikbw8"
+    ]
+  },
+  {
+    "name": "A Huge Runner",
+    "symbol": "CHUNGUS",
+    "contractAddress": "AVA4UktZzx8qbakTsncHfGc7mBkVmHo1N7yfDbJrpump",
+    "marketCap": 2331.19,
+    "peakMarketCap": 16753.783209519235,
+    "pairCreatedAt": "07/23/2026, 00:49:27 CDT",
+    "xLink": "",
+    "wallets": [
+      "DVMkhiQe1D8yenuEgsW44NjRn9LfVQjGEpZcez5x7Mff",
+      "2kv8X2a9bxnBM8NKLc6BBTX2z13GFNRL4oRotMUJRva9",
+      "FczAVrSD8WPAymBhWrcFy8QsRjgDqmFkuqWa1KkAbzuD",
+      "CAPn1yH4oSywsxGU456jfgTrSSUidf9jgeAnHceNUJdw",
+      "97K6nsFhBWDKwQf6heDDhDtsCRC4779LPHSFZkc2zqK4"
+    ]
+  },
+  {
+    "name": "madebythomasai",
+    "symbol": "THOMAS",
+    "contractAddress": "Dpvax2ph6AeVhQFk9zzKZ6eznSPaNRcMuE4v7vVhpump",
+    "marketCap": 2168.22,
+    "peakMarketCap": 11479.596280355458,
+    "pairCreatedAt": "07/23/2026, 00:43:42 CDT",
+    "xLink": "",
+    "wallets": [
+      "99i9uVA7Q56bY22ajKKUfTZTgTeP5yCtVGsrG9J4pDYQ"
+    ]
+  },
+  {
+    "name": "Graffiti Conjecture 284",
+    "symbol": "GRAFFITI",
+    "contractAddress": "CN5RWXruR5mjhHNbHNiEQ6LaVcsLutxvo2JxXqAcpump",
+    "marketCap": 2168.76,
+    "peakMarketCap": 10783.416867691467,
+    "pairCreatedAt": "07/23/2026, 00:41:12 CDT",
+    "xLink": "",
+    "wallets": [
+      "99i9uVA7Q56bY22ajKKUfTZTgTeP5yCtVGsrG9J4pDYQ"
     ]
   }
 ]
